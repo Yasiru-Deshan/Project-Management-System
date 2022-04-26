@@ -1,9 +1,11 @@
-import React, { useState} from 'react'
-import Video from '../../videos/video.mp4'; 
-import { Button } from '../ButtonElements'
+import React, { Component } from 'react'
+import Table from '../common/table'; 
+import Like from '../common/like';
+import { ServicesCard } from '../Services/ServiceElements';
+import { Link } from 'react-router-dom';
 import { HeroContainer,
          HeroBg,
-         VideoBg,
+         ImgBg,
          HeroContent,
          HeroH1,
          HeroP,
@@ -12,37 +14,40 @@ import { HeroContainer,
          ArrowRight
           } from './HeroElements';
 
-const HeroSection = () => {
+class Home extends Component{
 
-    const [hover, setHover] = useState(false)
+    // [hover, setHover] = useState(false)
 
-    const onHover = ()=>{
-        setHover(!hover)
-    }
+    // const onHover = ()=>{
+    //     setHover(!hover)
+    // }
+    
+
+    
+
+    render(){
+  
+
     return (
         <HeroContainer id='home'>
             <HeroBg>
-                <VideoBg autoPlay loop muted src={Video} type='video/mp4'/>
+                  <ImgBg style={{ background: '#7F00FF',  /* fallback for old browsers */
+                                  background: '-webkit-linear-gradient(to left, #7F00FF,#E100FF)',  /* Chrome 10-25, Safari 5.1-6 */
+                                  background: 'linear-gradient(to left,#7F00FF, #E100FF)', }}/>
             </HeroBg>
             <HeroContent>
-                <HeroH1>Virtual Banking Made Easy</HeroH1>
+               
                 <HeroP>
-                    Sign up for a new account today and recieve
-                    $250 in credit towards your next payment
+                    
                 </HeroP>
-                <HeroBtnWrapper>
-                    <Button to='signup' onMouseEnter = {onHover} 
-                    onMouseLeave = {onHover}
-                    primary='true'
-                    dark='true'
-                    smooth={true} 
-                    duration={500} 
-                    spy={true} 
-                    exact='true' 
-                    offset={-80}>
-                        Get started {hover ? <ArrowForward/>:<ArrowRight/>}
-                    </Button>
-                </HeroBtnWrapper>
+
+                <ServicesCard>
+                       <HeroP>
+                         Pending Topics
+                       </HeroP>
+                     
+                </ServicesCard>
+               
             </HeroContent>
 
         </HeroContainer>
@@ -50,5 +55,6 @@ const HeroSection = () => {
         
     );
 };
+}
 
-export default HeroSection;
+export default Home;

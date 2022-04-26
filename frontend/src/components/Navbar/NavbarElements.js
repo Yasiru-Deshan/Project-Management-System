@@ -126,4 +126,11 @@ export const NavBtnLink = styled(LinkR)`
         color: #010606;
     }
 
+`;
+
+export const TopImg = styled.div`
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        
 `
