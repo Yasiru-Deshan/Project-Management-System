@@ -11,7 +11,6 @@ export const InfoContainer = styled.div`
      export const InfoWrapper = styled.div`
      display: grid;
      z-index: 1;
-     height: 860px;
      width: 100%;
      max-width: 1100px;
      margin-right: auto;
@@ -63,7 +62,7 @@ export const InfoContainer = styled.div`
      font-size: 48px;
      line-height: 1.1;
      font-weight: 600;
-     color: ${({ lightText }) => (lightText ? '#f7f8fa' :
+     color: ${({ lightText }) => (lightText ? '#01BF71' :
       '#010606')};
      
      @media.screen and (max-width: 480px){
