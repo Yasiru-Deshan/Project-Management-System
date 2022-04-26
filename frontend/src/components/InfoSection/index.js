@@ -1,15 +1,12 @@
 import React from 'react'
 import { Button } from '../ButtonElements';
 import { ServicesCard } from '../Services/ServiceElements';
-
-
 import { InfoContainer,
          InfoWrapper,
-         Heading
-        
-          } from './InfoElements';
+         Heading     
+} from './InfoElements';
 
-const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headline,darkText,description,buttonLabel,img,alt,primary,dark,dark2}) => {
+const InfoSection = ({lightBg,id,lightText}) => {
     return (
         <>
         <InfoContainer lightBg = {lightBg} id={id}>

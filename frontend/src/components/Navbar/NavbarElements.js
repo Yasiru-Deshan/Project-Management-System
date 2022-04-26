@@ -129,8 +129,7 @@ export const NavBtnLink = styled(LinkR)`
 `;
 
 export const TopImg = styled.div`
-        width: 45px;
-        height: 45px;
+        Object-fit: cover;
         border-radius: 50%;
         
 `

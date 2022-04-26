@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import {FaBars} from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
-import background from "../../images/img_avatar2.png"; 
+import background from "../../images/f1.png"; 
 import { animateScroll as scroll } from 'react-scroll';
 import { Nav,
          NavbarContainer, 
@@ -90,6 +90,8 @@ const Navbar = ({ toggle}) => {
                   </NavBtn>
                   <NavBtn>
                       <TopImg style={{backgroundImage: `url(${background})`,
+                                      width: '45px',
+                                      height: '45px',
                                       objectFit: 'cover'
                                  }}
                            />
