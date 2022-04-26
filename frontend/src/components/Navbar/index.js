@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import {FaBars} from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
+import background from "../../images/img_avatar2.png"; 
 import { animateScroll as scroll } from 'react-scroll';
 import { Nav,
          NavbarContainer, 
@@ -10,7 +11,8 @@ import { Nav,
          NavItem, 
          NavLinks,
          NavBtn,
-         NavBtnLink
+         NavBtnLink,
+         TopImg
         } from './NavbarElements'; 
 
 const Navbar = ({ toggle}) => {
@@ -39,7 +41,7 @@ const Navbar = ({ toggle}) => {
         <Nav scrollNav={scrollNav}>
               <NavbarContainer> 
                   <NavLogo to="/" onClick={toggleHome}>
-                      ProjectManager.Sliit
+                      ProjectManager
                   </NavLogo>
 
                   <MobileIcon onClick={toggle}>
@@ -85,6 +87,12 @@ const Navbar = ({ toggle}) => {
                   </NavMenu>
                   <NavBtn>
                       <NavBtnLink to='/signin'>Sign In</NavBtnLink>
+                  </NavBtn>
+                  <NavBtn>
+                      <TopImg style={{backgroundImage: `url(${background})`,
+                                      objectFit: 'cover'
+                                 }}
+                           />
                   </NavBtn>
 
               </NavbarContainer>
