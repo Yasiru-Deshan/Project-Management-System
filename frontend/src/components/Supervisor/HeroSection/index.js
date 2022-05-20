@@ -1,29 +1,24 @@
 import React, { Component } from 'react'
-import Table from '../common/table'; 
-import Like from '../common/like';
-import Icon2 from '../../images/svg-2.svg'
-import Icon3 from '../../images/svg-3.svg'
+import Table from '../../common/table'; 
+import Like from '../../common/like';
+import Icon2 from '../../../images/svg-2.svg'
+import Icon3 from '../../../images/svg-3.svg'
 import { ServicesH1,
          ServicesH2,
          ServicesContainer,
          ServicesWrapper,
          ServicesCard,
          ServicesIcon,
-         Servicesp,
-         TableCard } from '../Services/ServiceElements';
-import {getMovies} from '../../services/fakeMovieService';
-import { Link } from 'react-router-dom';
+         TableCard } from '../../Services/ServiceElements';
+import {getMovies} from '../../../services/fakeMovieService';
 import { HeroContainer,
          HeroBg,
          ImgBg,
          HeroContent,
-         HeroH1,
          HeroP,
-         HeroBtnWrapper,
-         ArrowForward,
-         ArrowRight
           } from './HeroElements';
-import { Button } from '../ButtonElements';
+import { Button } from '../../ButtonElements';
+import Modal from 'react-modal';
 
 class Home extends Component{
 

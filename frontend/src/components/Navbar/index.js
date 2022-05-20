@@ -65,7 +65,7 @@ const Navbar = ({ toggle}) => {
                                     duration={500} 
                                     spy={true} 
                                     exact='true' 
-                                    offset={-80}>Templates</NavLinks>
+                                    offset={-80}>Chat</NavLinks>
                       </NavItem>
                       <NavItem>
                           <NavLinks to="services"
@@ -89,10 +89,11 @@ const Navbar = ({ toggle}) => {
                       <NavBtnLink to='/signin'>Sign In</NavBtnLink>
                   </NavBtn>
                   <NavBtn>
-                      <TopImg style={{backgroundImage: `url(${background})`,
+                      <img style={{backgroundImage: `url(${background})`,
                                       width: '45px',
                                       height: '45px',
-                                      objectFit: 'cover'
+                                      objectFit: 'cover',
+                                      borderRadius: '50%'
                                  }}
                            />
                   </NavBtn>
