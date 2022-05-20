@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import {FaBars} from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
-import background from "../../images/img_avatar2.png"; 
+import background from "../../images/f1.png"; 
 import { animateScroll as scroll } from 'react-scroll';
 import { Nav,
          NavbarContainer, 
@@ -65,7 +65,7 @@ const Navbar = ({ toggle}) => {
                                     duration={500} 
                                     spy={true} 
                                     exact='true' 
-                                    offset={-80}>Templates</NavLinks>
+                                    offset={-80}>Chat</NavLinks>
                       </NavItem>
                       <NavItem>
                           <NavLinks to="services"
@@ -89,8 +89,11 @@ const Navbar = ({ toggle}) => {
                       <NavBtnLink to='/signin'>Sign In</NavBtnLink>
                   </NavBtn>
                   <NavBtn>
-                      <TopImg style={{backgroundImage: `url(${background})`,
-                                      objectFit: 'cover'
+                      <img style={{backgroundImage: `url(${background})`,
+                                      width: '45px',
+                                      height: '45px',
+                                      objectFit: 'cover',
+                                      borderRadius: '50%'
                                  }}
                            />
                   </NavBtn>
