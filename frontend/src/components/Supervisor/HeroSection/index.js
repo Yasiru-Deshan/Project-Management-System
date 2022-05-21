@@ -9,7 +9,7 @@ import { ServicesH1,
          ServicesWrapper,
          ServicesCard,
          ServicesIcon,
-         TableCard } from '../../Services/ServiceElements';
+         TableCard } from '../Services/ServiceElements';
 import {getMovies} from '../../../services/fakeMovieService';
 import { HeroContainer,
          HeroBg,

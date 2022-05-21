@@ -6,6 +6,9 @@ const dotenv = require("dotenv");
 const app = express(); 
 require("dotenv").config();
 
+//import topic routes
+const topicRoutes = require('./routes/Topic')
+
 const PORT = process.env.PORT||8070;
 
 app.use(cors());
@@ -33,4 +36,5 @@ app.listen(PORT,()=>{
     console.log(`Server is up and running on port ${PORT}`)
 });
 
+app.use("/api/topics", topicRoutes)
 

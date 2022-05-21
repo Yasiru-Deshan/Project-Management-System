@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '../../ButtonElements';
-import { ServicesCard } from '../../Services/ServiceElements';
+import { ServicesCard } from '../Services/ServiceElements';
 import { InfoContainer,
          InfoWrapper,
          Heading     
@@ -38,7 +38,7 @@ const InfoSection = ({lightBg,id,lightText}) => {
                           <td><Button>View & Evaluate</Button></td>
                           <td><Button>Send to Supervisor</Button></td>
                          </tr>
-              <tr>
+                         <tr>
                           <td>SE 3070</td>  
                           <td>5/3/2022</td>
                           <td>Mr.Livingstone</td>
