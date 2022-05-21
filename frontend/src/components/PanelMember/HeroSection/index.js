@@ -9,7 +9,7 @@ import { ServicesH1,
          ServicesWrapper,
          ServicesCard,
          ServicesIcon,
-         TableCard } from '../../Services/ServiceElements';
+         TableCard } from '../Services/ServiceElements';
 import {getMovies} from '../../../services/fakeMovieService';
 import { HeroContainer,
          HeroBg,
@@ -62,7 +62,7 @@ class Home extends Component{
                            <th>Date</th>
                            <th>View</th>
                            <th>Status</th>
-                           <th></th>
+                          
                   
                          </tr>
                        </thead>
@@ -71,31 +71,37 @@ class Home extends Component{
                          <tr>
                            <td>SE_3040</td>  
                            <td>11/4/2022</td>
-                           <td><Button>https://www.dropbox.com/s/0sn4pdcz9q163vk/IT19251110.zip?dl=0</Button></td>
+                           <td><Button>https://www.dropbox.com/s/0sn4pdcz9q163vk</Button></td>
                            <td><Button>Pending</Button></td>
-                           <td><Button>Marking Scheme</Button></td>
+                          
     </tr>
     <tr>
                            <td>SE_3040</td>  
                            <td>11/4/2022</td>
-                           <td><Button>https://www.dropbox.com/s/0sn4pdcz9q163vk/IT19251110.zip?dl=0</Button></td>
+                           <td><Button>https://www.dropbox.com/s/0sn4pdcz9q163vk</Button></td>
                            <td><Button>Pending</Button></td>
-                           <td><Button>Marking Scheme</Button></td>
+                          
     </tr>
     <tr>
                            <td>SE_3040</td>  
                            <td>11/4/2022</td>
-                           <td><Button>https://www.dropbox.com/s/0sn4pdcz9q163vk/IT19251110.zip?dl=0</Button></td>
+                           <td><Button>https://www.dropbox.com/s/0sn4pdcz9q163vk</Button></td>
                            <td><Button>Pending</Button></td>
-                           <td><Button>Marking Scheme</Button></td>
+                          
     </tr>
                   
                        </tbody>
                      </table>
                 </TableCard>
-                
+                 <ServicesCard>
+                    <ServicesIcon src={Icon2}/>
+                    <HeroP>Marking Schemes</HeroP>
+            
+                </ServicesCard>
                </ServicesWrapper>
                </ServicesContainer>
+
+              
               
             </HeroContent>
 
