@@ -9,6 +9,7 @@ import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import TopicAccept from './components/Supervisor/TopicAccept';
 import Footer from './components/Footer';
+import ChatApp from './components/Chat/chat';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
@@ -26,6 +27,7 @@ function App() {
              <Route path='/signin' element={<SigninPage/>} exact/>
              <Route path='/login' element={<LoginPage/>} exact/>
              <Route path='/topic/:id' element={<TopicAccept/>} exact/>
+             <Route path='/chat' element={<ChatApp/>} exact/>
         </Routes>
        <Footer/>
     </Router>

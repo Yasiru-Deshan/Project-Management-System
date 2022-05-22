@@ -120,7 +120,7 @@ function Home(){
                          {topic.status ? null :
                          <tr>
                           <td>{topic.groupId}</td>  
-                           <td><Button>View</Button></td>
+                           <td><Link to={`/topic/${topic._id}`}><Button>View</Button></Link></td>
                          </tr>
                          }
                          </>

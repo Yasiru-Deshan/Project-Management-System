@@ -20,7 +20,8 @@ const TopicAccept = ()=>{
       setTitle(response.title);
       setGroup(response.groupId);
       setDescription(response.description);
-      setStatus(response.status)
+      setStatus(response.status);
+    
     }
    fetchData();
    },[id])
@@ -69,8 +70,11 @@ const TopicAccept = ()=>{
                   </Card.Body>
                   
                <Card.Footer>
+                       {status ?
+                             <div>
                             <Button className="btn btn-danger" style={{float: 'left'}}>Decline</Button>
-                          <Link to='/'><Button style={{float: 'right'}} onClick={submitHandler}>Approve</Button></Link>
+                          <Link to='/'><Button style={{float: 'right'}} onClick={submitHandler}>Approve</Button></Link></div>
+                          : null}
                 </Card.Footer>
              </Card>
          </center>.
