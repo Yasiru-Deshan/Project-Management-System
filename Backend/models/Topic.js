@@ -6,6 +6,9 @@ const topicSchema = new mongoose.Schema(
         groupId:{
            type: String
         },
+        title:{
+            type: String
+        },
         description:{
             type: String
         },
