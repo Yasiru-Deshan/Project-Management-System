@@ -9,6 +9,11 @@ require("dotenv").config();
 //import topic routes
 const topicRoutes = require('./routes/Topic')
 
+// import Panel routes
+const PanelRoute = require('./routes/Panel');
+// import Staff routes - Admin Side
+// const StaffRoute = require('./routes/ViewStaff');
+
 const PORT = process.env.PORT||8070;
 
 app.use(cors());
@@ -36,5 +41,10 @@ app.listen(PORT,()=>{
     console.log(`Server is up and running on port ${PORT}`)
 });
 
-app.use("/api/topics", topicRoutes)
+app.use("/api/topics", topicRoutes);
+
+// Create routes to Panel
+app.use("/admin/staffmng/panel", PanelRoute);
+// Create routes to Staff - Admin side
+// app.use("/admin/staffmng/viewstaff", StaffRoute);
 
