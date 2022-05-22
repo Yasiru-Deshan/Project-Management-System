@@ -15,11 +15,7 @@ const Home = () => {
         
         <HeroSection />
         <InfoSection {...homeObjOne}/>
-        
-        
-    
-      
-        
+  
         </>
     )
 }
