@@ -39,4 +39,4 @@ router.route("/delete/:id").delete( async(req,res)=>{
     }
 });
 
-// module.exports = Staff;
+// module.exports = router;
