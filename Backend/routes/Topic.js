@@ -25,4 +25,32 @@ router.get('/all', async(req,res)=>{
 
 });
 
+//get topic by id
+router.get('/:id', async(req,res)=>{
+
+    try{
+        const topic = await Topic.findById(req.params.id);
+         res.status(200).json(topic);
+    }catch(err){
+        res.status(500).json(err);
+    }
+})
+
+//Approve a topic
+router.put('/approve/:id', async (req, res) => {
+	try {
+		const topic = await Topic.findByIdAndUpdate(
+			req.params.id,
+			{
+				$set: req.body
+			},
+			{ new: true }
+		);
+		res.status(200).json(topic);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
+
 module.exports = router;
