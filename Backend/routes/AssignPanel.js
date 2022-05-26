@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Panel = require("../models/Panel");
+const Panel = require("../models/panel");
 // const StudentGrp = require("../models/StudentGrp");
 
 // Retrive the panel details
