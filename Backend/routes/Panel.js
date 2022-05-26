@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Panel = require("../models/Panel");
+const Panel = require("../models/panel");
 
 // Create a panel
 router.route("/add").post( async(req, res)=>{

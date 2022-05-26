@@ -3,20 +3,24 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const path = require('path');
 const app = express(); 
 require("dotenv").config();
 
 //import topic routes
 const topicRoutes = require('./routes/Topic')
 
-// import Panel routes
-const PanelRoute = require('./routes/Panel');
+// import Panel routes - Admin side
+const PanelRoute = require('./routes/panel');
 // import Staff routes - Admin Side
-// const StaffRoute = require('./routes/ViewStaff');
+// const StaffRoute = require('./routes/viewStaff');
 // import Student routes - Admin Side
-// const StudentRoute = require('./routes/ViewStudents');
+// const StudentRoute = require('./routes/viewStudents');
 // import Student routes - Admin Side
-// const AssignPanelRoute = require('./routes/AssignPanel');
+// const AssignPanelRoute = require('./routes/assignPanel');
+// import Document Template routes - Admin Side
+const UploadDocTemplate = require('./routes/uploadDocTemplates');
+
 
 const PORT = process.env.PORT||8070;
 
@@ -40,14 +44,13 @@ connection.once("open", ()=>{
     console.log("Mongodb connection success!");
 });
 
-
 app.listen(PORT,()=>{
     console.log(`Server is up and running on port ${PORT}`)
 });
 
 app.use("/api/topics", topicRoutes);
 
-// Create routes to Panel
+// Create routes to Panel - Admin side
 app.use("/admin/staffmng/panel", PanelRoute);
 // Create routes to Staff - Admin side
 // app.use("/admin/staffmng/viewstaff", StaffRoute);
@@ -55,3 +58,5 @@ app.use("/admin/staffmng/panel", PanelRoute);
 // app.use("/admin/studentmng/viewstudents", StudentRoute);
 // Create routes to assign panel - Admin side
 // app.use("/admin/studentmng/assignpanel", AssignPanelRoute);
+// Create routes to upload document templates - Admin side
+app.use("/admin/doctemplate", UploadDocTemplate);
