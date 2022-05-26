@@ -10,19 +10,19 @@ const panelSchema = new Schema({
     },
     supervisor_01_name:{
         type: String,
-        required: true,
+        required: false,
     },
     supervisor_02_name:{
         type: String,
-        required: true,
+        required: false,
     },
     supervisor_03_name:{
         type: String,
-        required: true,
+        required: false,
     },
     supervisor_04_name:{
         type: String,
-        required: true,
+        required: false,
     }
 
 });
