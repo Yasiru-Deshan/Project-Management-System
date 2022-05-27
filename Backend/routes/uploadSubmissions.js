@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const multer = require('multer');
 
-const File = require('../models/documentTemplate');
+const File = require('../models/Submission');
 
 const upload = multer({
   storage: multer.diskStorage({
     destination(req, file, cb) {
-      cb(null, './DocumentTemplates');
+      cb(null, './Submissions');
     },
     filename(req, file, cb) {
       cb(null, `${new Date().getTime()}_${file.originalname}`);
@@ -29,11 +29,12 @@ const upload = multer({
 
 router.post('/upload', upload.single('file'), async (req, res) => {
     try {
-      const { title, description } = req.body;
+      const { title, description, deadline } = req.body;
       const { path, mimetype } = req.file;
       const file = new File({
         title,
         description,
+        deadline,
         file_path: path,
         file_mimetype: mimetype
       });
@@ -74,7 +75,6 @@ router.route("/delete/:id").delete( async(req,res)=>{
       res.status(500).json(err);
   }
 });
-
 
 // router.get('/download/:id', async (req, res) => {
 //   try {
