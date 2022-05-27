@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const multer = require('multer');
 
-const File = require('../models/documentTemplate');
+const File = require('../models/MarkingScheme');
 
 const upload = multer({
   storage: multer.diskStorage({
     destination(req, file, cb) {
-      cb(null, './DocumentTemplates');
+      cb(null, './MarkingSchemes');
     },
     filename(req, file, cb) {
       cb(null, `${new Date().getTime()}_${file.originalname}`);
@@ -68,7 +68,7 @@ router.route("/delete/:id").delete( async(req,res)=>{
   try{
       const file = await File.findById(req.params.id);
           await file.deleteOne();
-          res.status(200).json("The document template has been deleted, Successfully!")
+          res.status(200).json("The marking scheme has been deleted, Successfully!")
   
   }catch(err){
       res.status(500).json(err);
