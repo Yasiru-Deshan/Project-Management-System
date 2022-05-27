@@ -20,6 +20,8 @@ const PanelRoute = require('./routes/panel');
 // const AssignPanelRoute = require('./routes/assignPanel');
 // import Document Template routes - Admin Side
 const UploadDocTemplate = require('./routes/uploadDocTemplates');
+// import Marking Schemes routes - Admin Side
+const MarkingSchemes = require('./routes/uploadMarkingSchemes');
 
 
 const PORT = process.env.PORT||8070;
@@ -60,3 +62,6 @@ app.use("/admin/staffmng/panel", PanelRoute);
 // app.use("/admin/studentmng/assignpanel", AssignPanelRoute);
 // Create routes to upload document templates - Admin side
 app.use("/admin/doctemplate", UploadDocTemplate);
+// Create routes to upload marking schemes - Admin side
+app.use("/admin/markingschemes", MarkingSchemes);
+
