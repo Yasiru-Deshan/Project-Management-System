@@ -16,7 +16,7 @@ const TopicAccept = ()=>{
    useEffect(()=>{
 
     async function fetchData(){
-      const response = (await axios.get(`http://localhost:8070/api/topics/${id}`)).data;
+      const response = (await axios.get(`http://localhost:5000/api/topics/${id}`)).data;
       setTitle(response.title);
       setGroup(response.groupId);
       setDescription(response.description);
@@ -35,7 +35,7 @@ const TopicAccept = ()=>{
       }
 
       try{
-        update = await axios.put(`http://localhost:8070/api/topics/approve/${id}`,approvedTopic)
+        update = await axios.put(`http://localhost:5000/api/topics/approve/${id}`,approvedTopic)
 
          if (update){
        window.alert("Topic has been approved")

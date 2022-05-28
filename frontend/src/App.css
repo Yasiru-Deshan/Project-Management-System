@@ -1,8 +1,53 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Encode Sans Expanded',
-    sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins',sans-serif;
 
 }
+
+.app {
+	position: relative;
+	min-height: 100vh;
+}
+
+
+.avatar-image {
+	vertical-align: middle;
+	width: 150px;
+	height: auto;
+	border-radius: 50%;
+}
+
+.avatar-image-small {
+	vertical-align: text-top;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	-webkit-box-shadow: 0px 6px 9px 0px #777;
+	-moz-box-shadow: 0px 6px 9px 0px #777;
+	box-shadow: 0px 6px 9px 0px #777;
+	margin-right: 10px;
+}
+
+.notification-wrapper {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+}
+
+.notification-container {
+	z-index: 1000;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+}
+.notification-close {
+	cursor: pointer;
+	z-index: 400;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+}
+
+

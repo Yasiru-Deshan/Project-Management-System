@@ -39,7 +39,7 @@ function Home(){
    useEffect(()=>{
      
     const getTopics = ()=>{
-      axios.get('http://localhost:8070/api/topics/all').then((res)=>{
+      axios.get('http://localhost:5000/api/topics/all').then((res)=>{
           setTopicList(res.data);
       })
     }
