@@ -11,38 +11,40 @@ const InfoSection = ({lightBg,id,lightText}) => {
         <>
         <InfoContainer lightBg = {lightBg} id={id}>
             <InfoWrapper >
-              <ServicesCard style={{margin: '50px 0px 50px 0px'}}>
+              <ServicesCard style={{margin: '50px 50px 50px 0px'}}>
 
                 <Heading lightText={lightText}>
-                              Documents Evaluation
+                              Presentation Evaluation
                           </Heading>
 
                  <table className='table'>
                        <thead>
                          <tr>
                            <th>Group ID</th>
-                           <th>Group Name</th>
-                           <th>Documents</th>
-                           <th></th>
+                           <th>Date</th>
+                           <th>Supervisor</th>
                            <th>Status</th>
+                           <th></th>
                   
                          </tr>
                        </thead>
                        <tbody>
                        
                          <tr>
-                          <td>fdddddddddddddddddddddddddddddddddddddddddd</td>  
-                          <td>fdddddddddffffffffffffffffffff</td>
-                          <td>fdddddddd</td>
-                          <td><Button>View & Evaluate</Button></td>
+                          <td>SE 3050</td>  
+                          <td>5/3/2022</td>
+                          <td>Mr.Livingstone</td>
                           <td><Button>Pending</Button></td>
+                          <td><Button>View & Evaluate</Button></td>
+                          <td><Button>Send to Supervisor</Button></td>
                          </tr>
-              <tr>
-                          <td>fdddddddddddddddddddddddddddddddddddddddddd</td>  
-                          <td>fdddddddddffffffffffffffffffff</td>
-                          <td>fdddddddd</td>
-                          <td><Button>View & Evaluate</Button></td>
+                         <tr>
+                          <td>SE 3070</td>  
+                          <td>5/3/2022</td>
+                          <td>Mr.Livingstone</td>
                           <td><Button>Pending</Button></td>
+                          <td><Button>View & Evaluate</Button></td>
+                          <td><Button>Send to Supervisor</Button></td>
                          </tr>
                        </tbody>
                      </table>

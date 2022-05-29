@@ -8,7 +8,8 @@ import UserManagement from './pages/UserManagement/UserManagement';
 import CreateCustomer from './components/UserManagement/CreateCustomer';
 import UpdateCustomer from './components/UserManagement/UpdateCustomer';
 import CustomerProfile from './components/UserManagement/CustomerProfile';
-import TopicAccept from './components/Supervisor/TopicAccept'
+import TopicAccept from './components/Supervisor/TopicAccept';
+import Chat from './components/Chat/chat';
 
 import SupervisorHome from './pages/Supervisor'
 
@@ -65,6 +66,9 @@ const getRoutes = (role, token) => {
 				</Route>
 				<Route exact path='/topic/:id'>
 					<TopicAccept />
+				</Route>
+				<Route exact path='/chat'>
+					<Chat />
 				</Route>
 				<Route exact path='/manage-users'>
 					<UserManagement />

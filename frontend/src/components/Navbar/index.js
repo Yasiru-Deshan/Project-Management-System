@@ -99,8 +99,8 @@ const Navbar = ({ user,toggle}) => {
                  {!auth.isLoggedIn && (
                   <NavBtn>
                       <NavBtnLink 
-                        to='/login'
-                        >Sign In</NavBtnLink>
+                        to='/register'
+                        >Sign Up</NavBtnLink>
                   </NavBtn>
                  )}
                   

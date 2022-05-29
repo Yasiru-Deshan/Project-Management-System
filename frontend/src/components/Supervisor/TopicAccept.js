@@ -65,7 +65,7 @@ const TopicAccept = ()=>{
                    <Card.Body>
                         <Card.Title style={{fontWeight: 'bold', fontSize: '1.5rem'}}>{title}</Card.Title>
                         <h4>Group ID - {group}</h4>
-                        <p>{description}</p>
+                        <p style={{color:"black"}}>{description}</p>
                     
                   </Card.Body>
                   
