@@ -10,7 +10,6 @@ import { ServicesH1,
          ServicesCard,
          ServicesIcon,
          TableCard } from '../Services/ServiceElements';
-import {getMovies} from '../../../services/fakeMovieService';
 import { HeroContainer,
          HeroBg,
          ImgBg,
@@ -28,9 +27,7 @@ class Home extends Component{
     //     setHover(!hover)
     // }
     
-   state = {
-     movies: getMovies()
-   }
+   
     
 
     render(){

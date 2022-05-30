@@ -102,6 +102,7 @@ const Login = () => {
 								required
 							/>
 						</div>
+						
 						<div className='mb-3'>
 							<button className='btn btn-primary w-100'>
 								Login
@@ -110,7 +111,7 @@ const Login = () => {
 					</form>
 				</Card.Body>
                   
-               <Card.Footer>Need an account?<Link to='/signin'>Sign In</Link></Card.Footer>
+               <Card.Footer>Need an account?<Link to='/signup'>Sign Up</Link></Card.Footer>
              </Card>
 			</div>
 		</div>

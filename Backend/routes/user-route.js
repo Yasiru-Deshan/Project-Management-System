@@ -3,7 +3,7 @@ const {
 	login,
 	addUser,
 	promoteUser,
-
+    signUp,
 	updateUser,
 	getUsers,
 	deleteCustomer,
@@ -16,7 +16,7 @@ const router = express.Router();
 
 router.get('/', getUsers);
 router.post('/login', login);
-//router.post('/signup', signUp); //admin register
+router.post('/signup', signUp); //admin register
 router.post('/create', adminAuth, addUser);
 router.post('/promote', adminAuth, promoteUser);
 

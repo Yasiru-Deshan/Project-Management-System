@@ -72,7 +72,7 @@ const Navbar = ({ user,toggle}) => {
                                     >Home</NavLinks>
                       </NavItem>
 				 )}
-				 {auth.isLoggedIn && (
+				 {auth.role === 'supervisor' && (
                       <NavItem>
                           <NavLinks to="/chat"
                                     smooth={true} 
@@ -82,17 +82,29 @@ const Navbar = ({ user,toggle}) => {
                                     offset={-80}>Chat</NavLinks>
                       </NavItem>
 				 )}
-				 {auth.isLoggedIn && ( 
-                      <NavItem>
+				
+				 {auth.role === 'cosupervisor' && (
+					 <NavItem>
                           <NavLinks to="/chat"
                                     smooth={true} 
                                     duration={500} 
                                     spy={true} 
                                     exact='true' 
-                                    offset={-80}>Templates</NavLinks>
+                                    offset={-80}>Chat</NavLinks>
+                      </NavItem>
+					  )}
+                 {auth.isLoggedIn && (
+                      <NavItem>
+                          <NavLinks to='/'
+                                    smooth={true} 
+                                    duration={500} 
+                                    spy={true} 
+                                    exact='true' 
+                                    offset={-80}
+                                
+                                    >Notifications</NavLinks>
                       </NavItem>
 				 )}
-
 
                  
                  
@@ -130,23 +142,23 @@ const Navbar = ({ user,toggle}) => {
 											alt=''
 											className='avatar-image-small mr-2'
 										/>
-										{auth.fullName}
+										{auth.fullName}[{auth.role}]
 									</div>
 									<ul
 										className='dropdown-menu'
 										aria-labelledby='navbarDropdown'>
 										<li>
-											{auth.role === 'instructor' ? (
+											{auth.role === 'cosupervisor' ? (
 												<Link
 													className='dropdown-item'
 													to={{
 														pathname:
-															'/instructor-profile',
+															'/myprofile',
 														state: {
 															customer: auth.user
 														}
 													}}>
-													View Profile
+													My Profile
 												</Link>
 											) : (
 												auth.role === 'user' && (

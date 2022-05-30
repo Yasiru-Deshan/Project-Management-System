@@ -10,16 +10,18 @@ import UpdateCustomer from './components/UserManagement/UpdateCustomer';
 import CustomerProfile from './components/UserManagement/CustomerProfile';
 import TopicAccept from './components/Supervisor/TopicAccept';
 import Chat from './components/Chat/chat';
-
-import SupervisorHome from './pages/Supervisor'
+import MyProfile from './pages/myProfile';
+import PanelMember from './pages/PanelMember';
+import SupervisorHome from './pages/Supervisor';
+import SignUp from './components/SignUp/signup';
 
 const getRoutes = (role, token) => {
 	let routes;
-	if (token && role === 'user') {
+	if (token && role === 'panelmember') {
 		routes = (
 			<Switch>
 				<Route exact path='/'>
-					<SupervisorHome/>
+					<PanelMember/>
 				</Route>
 				<Route exact path='/about'>
 					<Aboutus />
@@ -39,14 +41,14 @@ const getRoutes = (role, token) => {
 				<Redirect to='/'></Redirect>
 			</Switch>
 		);
-	} else if (token && role === 'instructor') {
+	} else if (token && role === 'cosupervisor') {
 		routes = (
 			<Switch>
 				<Route exact path='/'>
-					<Homepage />
+					<Chat />
 				</Route>
-				<Route exact path='/about'>
-					<Aboutus />
+				<Route exact path='/myprofile'>
+					<CustomerProfile />
 				</Route>
 				<Route exact path='/contact'>
 					<Contactus />
@@ -58,7 +60,7 @@ const getRoutes = (role, token) => {
 				<Redirect to='/'></Redirect>
 			</Switch>
 		);
-	} else if (token && role === 'admin') {
+	} else if (token && role === 'supervisor') {
 		routes = (
 			<Switch>
 				<Route exact path='/'>
@@ -95,7 +97,7 @@ const getRoutes = (role, token) => {
 				<Route exact path='/contact'>
 					<Contactus />
 				</Route>
-				<Route exact path='/login'>
+				<Route exact path='/'>
 					<Homepage />
 				</Route>
 				<Redirect to='/'></Redirect>
@@ -107,11 +109,11 @@ const getRoutes = (role, token) => {
 				<Route exact path='/'>
 					<Login />
 				</Route>
-				<Route exact path='/about'>
-					<Aboutus />
+				<Route exact path='/myprofile'>
+					<MyProfile />
 				</Route>
-				<Route exact path='/contact'>
-					<Contactus />
+				<Route exact path='/signup'>
+					<SignUp />
 				</Route>
 				<Route exact path='/login'>
 					<Login />

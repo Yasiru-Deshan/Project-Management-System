@@ -63,6 +63,18 @@ const login = async (req, res, next) => {
 	}
 };
 
+//get user by id
+const getUser = async (req, res, next) => {
+
+    try{
+        const topic = await User.findById(req.params.id);
+         res.status(200).json(topic);
+    }catch(err){
+        res.status(500).json(err);
+    }
+}
+
+
 const addUser = async (req, res, next) => {
 	const {
 		email,
@@ -211,56 +223,52 @@ const updateUser = async (req, res, next) => {
 		return res.status(500).json({ msg: err });
 	}
 };
-// const signUp = async (req, res, next) => {
-// 	const {
-// 		email,
-// 		password,
-// 		firstName,
-// 		lastName,
-// 		address,
-// 		age,
-// 		mobile
-// 	} = req.body;
+const signUp = async (req, res, next) => {
+	const {
+		email,
+		password,
+		firstName,
+		lastName,
+		role
+	} = req.body;
 
-// 	let user;
-// 	try {
-// 		user = new User({
-// 			email,
-// 			password,
-// 			firstName,
-// 			lastName,
-// 			age,
-// 			address,
-// 			mobile,
-// 			role: 'admin'
-// 		});
-// 		const salt = await bcrypt.genSalt(10);
-// 		user.password = await bcrypt.hash(password, salt);
+	let user;
+	try {
+		user = new User({
+			email,
+			password,
+			firstName,
+			lastName,
+			
+			role
+		});
+		const salt = await bcrypt.genSalt(10);
+		user.password = await bcrypt.hash(password, salt);
 
-// 		await user.save();
+		await user.save();
 
-// 		const data = {
-// 			user: {
-// 				id: user.id,
-// 				role: user.role
-// 			}
-// 		};
+		const data = {
+			user: {
+				id: user.id,
+				role: user.role
+			}
+		};
 
-// 		jwt.sign(data, 'alphafitness', { expiresIn: 360000 }, (err, token) => {
-// 			if (err) throw err;
-// 			return res.status(200).json({
-// 				token,
-// 				name: firstName,
-// 				id: user.id,
-// 				role: user.role
-// 			});
-// 		});
-// 	} catch (err) {
-// 		return res.status(500).json({
-// 			msg: err
-// 		});
-// 	}
-// };
+		jwt.sign(data, 'projectmanager', { expiresIn: 360000 }, (err, token) => {
+			if (err) throw err;
+			return res.status(200).json({
+				token,
+				name: firstName,
+				id: user.id,
+				role: user.role
+			});
+		});
+	} catch (err) {
+		return res.status(500).json({
+			msg: err
+		});
+	}
+};
 
 const validateEmail = (email) => {
 	const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -314,4 +322,4 @@ exports.promoteUser = promoteUser;
 exports.updateUser = updateUser;
 exports.deleteCustomer = deleteCustomer;
 exports.uploadProfilePic = uploadProfilePic;
-//exports.signUp = signUp;
+exports.signUp = signUp;

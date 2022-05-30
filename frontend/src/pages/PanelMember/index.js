@@ -7,7 +7,7 @@ import Footer from '../../components/Footer';
 import { homeObjOne,homeObjTwo,homeObjThree  } from '../../components/PanelMember/InfoSection/Data';
 
 
-const Home = () => {
+const PanelMember = () => {
 
     return (
         <>
@@ -21,4 +21,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default PanelMember
