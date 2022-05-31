@@ -9,7 +9,11 @@ import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import TopicAccept from './components/Supervisor/TopicAccept';
 import Footer from './components/Footer';
-import ChatApp from './components/Chat/chat';
+// import ChatApp from './components/Chat/chat';
+
+import AdminDashboard from '../src/pages/Admin/Dashboard/dashboard';
+import StaffManagement from '../src/pages/Admin/StaffManagement/staff';
+import UpdateStaffManagement from '../src/pages/Admin/StaffManagement/updateStaff';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
@@ -27,7 +31,11 @@ function App() {
              <Route path='/signin' element={<SigninPage/>} exact/>
              <Route path='/login' element={<LoginPage/>} exact/>
              <Route path='/topic/:id' element={<TopicAccept/>} exact/>
-             <Route path='/chat' element={<ChatApp/>} exact/>
+             {/* <Route path='/chat' element={<ChatApp/>} exact/> */}
+
+             <Route path='/admin/dashboard' element={<AdminDashboard/>} exact/>
+             <Route path='/admin/staffmng/viewstaff' element={<StaffManagement/>} exact/>
+             <Route path='/admin/staffmng/viewstaff/edit/:id' element={<UpdateStaffManagement/>} exact/>
         </Routes>
        <Footer/>
     </Router>

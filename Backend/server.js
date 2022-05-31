@@ -13,7 +13,7 @@ const topicRoutes = require('./routes/Topic')
 // import Panel routes - Admin side
 const PanelRoute = require('./routes/panel');
 // import Staff routes - Admin Side
-// const StaffRoute = require('./routes/viewStaff');
+const StaffRoute = require('./routes/viewStaff');
 // import Student routes - Admin Side
 // const StudentRoute = require('./routes/viewStudents');
 // import Student routes - Admin Side
@@ -57,7 +57,7 @@ app.use("/api/topics", topicRoutes);
 // Create routes to Panel - Admin side
 app.use("/admin/staffmng/panel", PanelRoute);
 // Create routes to Staff - Admin side
-// app.use("/admin/staffmng/viewstaff", StaffRoute);
+app.use("/admin/staffmng/viewstaff", StaffRoute);
 // Create routes to Student - Admin side
 // app.use("/admin/studentmng/viewstudents", StudentRoute);
 // Create routes to assign panel - Admin side
