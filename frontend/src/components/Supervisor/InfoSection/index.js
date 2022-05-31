@@ -1,10 +1,11 @@
 import React from 'react'
-import { Button } from '../../ButtonElements';
+import { Button } from 'react-bootstrap';
 import { ServicesCard } from '../Services/ServiceElements';
 import { InfoContainer,
          InfoWrapper,
          Heading     
 } from './InfoElements';
+import {Link} from 'react-router-dom';
 
 const InfoSection = ({lightBg,id,lightText}) => {
     return (
@@ -35,14 +36,14 @@ const InfoSection = ({lightBg,id,lightText}) => {
                           <td>fdddddddddffffffffffffffffffff</td>
                           <td>fdddddddd</td>
                           <td><Button>View & Evaluate</Button></td>
-                          <td><Button>Pending</Button></td>
+                          <td><button className="btn btn-success">Evaluated</button></td>
                          </tr>
               <tr>
                           <td>fdddddddddddddddddddddddddddddddddddddddddd</td>  
                           <td>fdddddddddffffffffffffffffffff</td>
                           <td>fdddddddd</td>
-                          <td><Button>View & Evaluate</Button></td>
-                          <td><Button>Pending</Button></td>
+                          <td><Link to='/evaluation'><Button>View & Evaluate</Button></Link></td>
+                          <td><button className='btn btn-danger'>Pending</button></td>
                          </tr>
                        </tbody>
                      </table>

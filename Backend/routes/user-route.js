@@ -6,6 +6,7 @@ const {
     signUp,
 	updateUser,
 	getUsers,
+	getProfile,
 	deleteCustomer,
 	uploadProfilePic
 } = require('../controllers/user-controller');
@@ -19,7 +20,7 @@ router.post('/login', login);
 router.post('/signup', signUp); //admin register
 router.post('/create', adminAuth, addUser);
 router.post('/promote', adminAuth, promoteUser);
-
+router.get('/myprofile',getProfile)
 router.put('/update', adminAuth, updateUser);
 router.put('/profilepic', Authentication, uploadProfilePic);
 router.delete('/delete', adminAuth, deleteCustomer);

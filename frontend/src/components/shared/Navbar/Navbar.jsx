@@ -130,12 +130,12 @@ const Navbar = () => {
 										className='dropdown-menu'
 										aria-labelledby='navbarDropdown'>
 										<li>
-											{auth.role === 'instructor' ? (
+											{auth.role === 'supervisor' ? (
 												<Link
 													className='dropdown-item'
 													to={{
 														pathname:
-															'/instructor-profile',
+															'/myprofile',
 														state: {
 															customer: auth.user
 														}

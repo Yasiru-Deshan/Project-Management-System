@@ -64,11 +64,11 @@ const login = async (req, res, next) => {
 };
 
 //get user by id
-const getUser = async (req, res, next) => {
-
+const getProfile = async (req, res, next) => {
+    const adminId = req.user.id;
     try{
-        const topic = await User.findById(req.params.id);
-         res.status(200).json(topic);
+        const profile = await User.findById(adminId);
+         res.status(200).json(profile);
     }catch(err){
         res.status(500).json(err);
     }
@@ -314,11 +314,12 @@ const deleteCustomer = async (req, res, next) => {
 		return res.status(500).json({ msg: err });
 	}
 };
+
 exports.getUsers = getUsers;
 exports.login = login;
 exports.addUser = addUser;
 exports.promoteUser = promoteUser;
-
+exports.getProfile = getProfile;
 exports.updateUser = updateUser;
 exports.deleteCustomer = deleteCustomer;
 exports.uploadProfilePic = uploadProfilePic;

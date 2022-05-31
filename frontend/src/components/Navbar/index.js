@@ -161,12 +161,12 @@ const Navbar = ({ user,toggle}) => {
 													My Profile
 												</Link>
 											) : (
-												auth.role === 'user' && (
+												auth.role === 'supervisor' && (
 													<Link
 														className='dropdown-item'
 														to={{
 															pathname:
-																'/customer-profile',
+																'/myprofile',
 															state: {
 																customer:
 																	auth.user,

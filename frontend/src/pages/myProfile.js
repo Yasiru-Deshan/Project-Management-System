@@ -1,7 +1,12 @@
-import React from "react";
-import Card from 'react-bootstrap/Card'
+import React,{ useContext, useEffect, useState } from "react";
+import Card from 'react-bootstrap/Card';
+import {AuthContext} from '../context/AuthContext';
+import axios from 'axios';
 
 const MyProfile=()=>{
+
+	 const auth = useContext(AuthContext);
+	 
 
     return(
         <div style={{background: '#7F00FF',  /* fallback for old browsers */
@@ -20,31 +25,19 @@ const MyProfile=()=>{
                       <Card.Title style={{fontSize:'50px'}}>My Profile</Card.Title>
                       	<form >
 						<div className='mb-3'>
-							<label htmlFor='fname'>First Name</label>
+							<label htmlFor='fname'>Full Name</label>
 							<input
 								type='email'
 								name='email'
 								className='form-control'
 								id='email'
-								//value={email}
+								value={auth.fullName}
 								//onChange={handleChange}
 								required
-								placeholder='john'
+								
 							/>
 						</div>
-                        <div className='mb-3'>
-							<label htmlFor='lname'>Last Name</label>
-							<input
-								type='email'
-								name='email'
-								className='form-control'
-								id='email'
-								//value={email}
-								//onChange={handleChange}
-								required
-								placeholder='Doe'
-							/>
-						</div>
+                      
                         <div className='mb-3'>
 							<label htmlFor='email'>Role</label>
 							<input
@@ -52,38 +45,13 @@ const MyProfile=()=>{
 								name='email'
 								className='form-control'
 								id='email'
-								//value={email}
+								value={auth.role}
 								//onChange={handleChange}
 								required
 								placeholder=''
 							/>
 						</div>
-                        <div className='mb-3'>
-							<label htmlFor='email'>Email</label>
-							<input
-								type='email'
-								name='email'
-								className='form-control'
-								id='email'
-								//value={email}
-								//onChange={handleChange}
-								required
-								placeholder='john@gmail.com'
-							/>
-						</div>
-                        <div className='mb-3'>
-							<label htmlFor='email'>Mobile</label>
-							<input
-								type='email'
-								name='email'
-								className='form-control'
-								id='email'
-								//value={email}
-								//onChange={handleChange}
-								required
-								placeholder='john@gmail.com'
-							/>
-						</div>
+                      
                         </form>
                   </Card.Body>           
 

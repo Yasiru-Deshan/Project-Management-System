@@ -14,6 +14,7 @@ import MyProfile from './pages/myProfile';
 import PanelMember from './pages/PanelMember';
 import SupervisorHome from './pages/Supervisor';
 import SignUp from './components/SignUp/signup';
+import EvaluationPage from './pages/evaluationPage';
 
 const getRoutes = (role, token) => {
 	let routes;
@@ -35,8 +36,8 @@ const getRoutes = (role, token) => {
 					component={CustomerProfile}
 				/>
 				
-				<Route exact path='/login'>
-					<Homepage />
+				<Route exact path='/'>
+					<PanelMember />
 				</Route>
 				<Redirect to='/'></Redirect>
 			</Switch>
@@ -72,11 +73,11 @@ const getRoutes = (role, token) => {
 				<Route exact path='/chat'>
 					<Chat />
 				</Route>
-				<Route exact path='/manage-users'>
-					<UserManagement />
+				<Route exact path='/evaluation'>
+					<EvaluationPage />
 				</Route>
-				<Route exact path='/create-customer'>
-					<CreateCustomer />
+                <Route exact path='/myprofile'>
+					<MyProfile />
 				</Route>
 				<Route
 					exact
@@ -109,9 +110,7 @@ const getRoutes = (role, token) => {
 				<Route exact path='/'>
 					<Login />
 				</Route>
-				<Route exact path='/myprofile'>
-					<MyProfile />
-				</Route>
+				
 				<Route exact path='/signup'>
 					<SignUp />
 				</Route>

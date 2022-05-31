@@ -39,8 +39,8 @@ const Login = () => {
 					response.data.role,
 					response.data.user
 				);
-				<Redirect to='/home' />;
-				return <Redirect to='/home' />;
+				<Redirect to='/' />;
+				return <Redirect to='/' />;
 			} else {
 				notification.showNotification(
 					'please check your credentials',
