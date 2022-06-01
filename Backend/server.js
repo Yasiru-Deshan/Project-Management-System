@@ -7,6 +7,9 @@ const path = require('path');
 const app = express(); 
 require("dotenv").config();
 
+//body parser middleware
+app.use
+
 //import topic routes
 const topicRoutes = require('./routes/Topic')
 
@@ -24,6 +27,12 @@ const UploadDocTemplate = require('./routes/uploadDocTemplates');
 const MarkingSchemes = require('./routes/uploadMarkingSchemes');
 // import Submissions routes - Admin Side
 const Submissions = require('./routes/uploadSubmissions');
+//import user route
+const users = require('./routes/users');
+//import request a superviosor route
+const studentProfile = require('./routes/studentProfile');
+//import student register profile route
+const requests = require('./routes/requests');
 
 
 const PORT = process.env.PORT||8070;
@@ -68,3 +77,9 @@ app.use("/admin/doctemplate", UploadDocTemplate);
 app.use("/admin/markingschemes", MarkingSchemes);
 // Create routes to upload marking schemes - Admin side
 app.use("/admin/submissions", Submissions);
+// user route
+app.use('/users',users);
+// request a superviosor route
+app.use('/studentProfile', studentProfile);
+// student register profile route
+app.use('/requests', requests);
