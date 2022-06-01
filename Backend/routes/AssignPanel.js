@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Panel = require("../models/panel");
-// const StudentGrp = require("../models/StudentGrp");
+const StudentGrp = require("../models/StudentGrp");
 
 // Retrive the panel details
 router.route("/view").get( async(req,res)=>{
@@ -25,9 +25,9 @@ router.route("/viewstudentgrp").get( async(req,res)=>{
 });
 
 //Assign a panel group
-router.route('/assign').post(async(req, res)=>{
+router.route('/assign/:id').post(async(req, res)=>{
 
-    let stdGrpId = req.body.id;
+    let stdGrpId = req.params.id;
 
     const assignPanel = req.body.assignpanel;
     try {
@@ -44,4 +44,4 @@ router.route('/assign').post(async(req, res)=>{
 
 });
 
-// module.exports = router;
+module.exports = router;
