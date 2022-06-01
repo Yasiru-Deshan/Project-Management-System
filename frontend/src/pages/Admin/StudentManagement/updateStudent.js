@@ -4,7 +4,7 @@ import axios from 'axios'
 import { HeroBg } from '../../../components/Supervisor/HeroSection/HeroElements';
 import './styles.css';
 
-export default function UpdateStaff() {
+export default function UpdateCustomer() {
     const [fname, setfname] = useState("");
     const [lname, setlname] = useState("");
     const [email, setemail] = useState("");
@@ -14,7 +14,7 @@ export default function UpdateStaff() {
 
     useEffect (() => {
         async function fetchData(){
-            const response = (await axios.get(`http://localhost:8070/admin/staffmng/viewstaff/edit/${id}`)).data;
+            const response = (await axios.get(`http://localhost:8070/admin/studentmng/viewstudents/edit/${id}`)).data;
             setfname(response.fname);
             setlname(response.lname);
             setemail(response.email);
@@ -23,26 +23,26 @@ export default function UpdateStaff() {
         fetchData();
     }, [id]);
     
-    const staffFormSubmit = (async(e) => {
+    const studentFormSubmit = (async(e) => {
         e.preventDefault();
 
-        const response = await axios.put(`http://localhost:8070/admin/staffmng/viewstaff/edit/${id}`, {fname, lname, email, phoneNo})
+        const response = await axios.put(`http://localhost:8070/admin/studentmng/viewstudents/edit/${id}`, {fname, lname, email, phoneNo})
             if(response){
                 // localStorage.setItem('Customer record of ' +response.data.fname +', was updated successfully! 😃');
-                window.location = "/admin/staffmng/viewstaff";
+                window.location = "/admin/studentmng/viewstudents";
             }
     });
 
-    const cancelReset = () => {
-        window.location = "/admin/staffmng/viewstaff";
+    const cancel = () => {
+        window.location = "/admin/studentmng/viewstudents";
     }
  
     return (
         <div className="it19184722-myForm-adminDashboard">
-            <h2 className="it19184722-h2">Staff Management</h2>
+            <h2 className="it19184722-h2">Student Management</h2>
             <HeroBg/>
-            <form onSubmit={staffFormSubmit} className="form-group it19184722-myForm">
-                <h2>Edit Staff Details</h2>
+            <form onSubmit={studentFormSubmit} className="form-group it19184722-myForm">
+                <h2>Edit Student Details</h2>
                 <label>First Name</label>
                 <input className="form-control" type="text" name="fname" required onChange={(e) => {setfname(e.target.value);}} value={fname} /><br/>
                 <label>Last Name</label>
@@ -52,7 +52,7 @@ export default function UpdateStaff() {
                 <label>Phone No</label>
                 <input className="form-control" type="text" name="phoneNo" required onChange={(e) => {setphone(e.target.value);}} value={phoneNo} /><br/>
                 <button className="btn it19184722-green-btn it19184722-mybtn" id="customerEditBtn">Update</button>
-                <input id="cancelButton2" type="button" value="Cancel" onClick={cancelReset} className="btn-danger it19184722-red-btn btn" />       
+                <input id="cancelButton2" type="button" value="Cancel" onClick={cancel} className="btn-danger it19184722-red-btn btn" />       
             </form>
         </div>
     )

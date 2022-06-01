@@ -14,13 +14,13 @@ export default function Dashboard(){
                 <div className="content">
                 <h2 className="title">Staff Management</h2>
                 <Link to='/admin/staffmng/viewstaff'><button className="btn btn-danger">View Staff</button></Link>
-                <button href="#" className="btn btn-danger">View Panels</button>
+                <Link to='/admin/staffmng/panel'><button href="#" className="btn btn-danger">View Panels</button></Link>
                 </div>
             </div>
             <div className="card">
                 <div className="content">
                 <h2 className="title">Student Management</h2>
-                <button href="#" className="btn btn-danger">View Students</button>
+                <Link to='/admin/studentmng/viewstudents'><button href="#" className="btn btn-danger">View Students</button></Link>
                 <button href="#" className="btn btn-danger">Assign Panel</button>
                 </div>
             </div>

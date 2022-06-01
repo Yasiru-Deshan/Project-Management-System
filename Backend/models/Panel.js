@@ -4,23 +4,23 @@ const Schema = mongoose.Schema;
 
 const panelSchema = new Schema({
 
-    panel_name:{
+    panel:{
         type: String,
         required: true,
     },
-    supervisor_01_name:{
+    supervisor_01:{
         type: String,
         required: false,
     },
-    supervisor_02_name:{
+    supervisor_02:{
         type: String,
         required: false,
     },
-    supervisor_03_name:{
+    supervisor_03:{
         type: String,
         required: false,
     },
-    supervisor_04_name:{
+    supervisor_04:{
         type: String,
         required: false,
     }

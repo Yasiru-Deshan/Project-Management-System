@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Staff = require("../models/Staff");
 
 // Retrive the staff details
-router.get('/view',async(req, res) => {
+router.route('/view').get(async(req, res) => {
 
     try {
         const staff = await Staff.find();

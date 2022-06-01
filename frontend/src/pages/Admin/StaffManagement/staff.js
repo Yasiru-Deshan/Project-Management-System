@@ -34,7 +34,7 @@ export default function StaffManagement(){
             deletion = await axios.delete(`http://localhost:8070/admin/staffmng/viewstaff/delete/${id}`);
         }
         if(deletion) {
-            localStorage.setItem("Customer record of " + fname + lname + ", was deleted successfully!");
+            localStorage.setItem("Staff record of " + fname + lname + ", was deleted successfully!");
             window.location = "/admin/staffmng/viewstaff"
         }    
     }
