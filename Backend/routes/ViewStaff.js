@@ -1,15 +1,35 @@
 const router = require("express").Router();
-// const Staff = require("../models/Staff");
+const Staff = require("../models/Staff");
 
 // Retrive the staff details
-router.route("/view").get( async(req,res)=>{
+router.route('/view').get(async(req, res) => {
 
-    Staff.find().then((staffs)=>{
-        res.json(staffs);
-    }).catch((err)=>{
-        console.log(err);
-    });
+    try {
+        const staff = await Staff.find();
+    
+        res.json({
+            "staff": staff
+        });
+        
+    } catch (error) {
+        res.status(400).json(error);
+    }
 
+});
+
+// Retrieve specific staff member
+router.route('/edit/:id').get(async(req, res) => {
+
+    const id = req.params.id;
+
+    try{
+        const staff = await Staff.findOne({_id:id});
+        res.json(staff);
+        
+    }catch (error) {
+        console.log(error)
+        res.status(400).json(error);
+    }
 });
 
 // Update the staff member
@@ -24,7 +44,7 @@ router.route("/edit/:id").put( async(req,res)=>{
    }catch(err){
        res.status(500).json(err);
    }
-})
+});
 
 // Delete the panel
 router.route("/delete/:id").delete( async(req,res)=>{
@@ -39,4 +59,4 @@ router.route("/delete/:id").delete( async(req,res)=>{
     }
 });
 
-// module.exports = router;
+module.exports = router;

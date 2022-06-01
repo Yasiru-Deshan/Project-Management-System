@@ -4,18 +4,18 @@ const Panel = require("../models/panel");
 // Create a panel
 router.route("/add").post( async(req, res)=>{
 
-    const panel_name = req.body.panel_name;
-    const supervisor_01_name = req.body.supervisor_01_name;
-    const supervisor_02_name = req.body.supervisor_02_name;
-    const supervisor_03_name = req.body.supervisor_03_name;
-    const supervisor_04_name = req.body.supervisor_04_name;
+    const panel = req.body.panel;
+    const supervisor_01 = req.body.supervisor_01;
+    const supervisor_02 = req.body.supervisor_02;
+    const supervisor_03 = req.body.supervisor_03;
+    const supervisor_04 = req.body.supervisor_04;
 
     const newPanel = new Panel({
-        panel_name,
-        supervisor_01_name,
-        supervisor_02_name,
-        supervisor_03_name,
-        supervisor_04_name
+        panel,
+        supervisor_01,
+        supervisor_02,
+        supervisor_03,
+        supervisor_04
     });
 
     newPanel.save().then(()=>{
@@ -29,12 +29,32 @@ router.route("/add").post( async(req, res)=>{
 // Retrive the panel details
 router.route("/view").get( async(req,res)=>{
 
-    Panel.find().then((pannels)=>{
-        res.json(pannels)
-    }).catch((err)=>{
-        console.log(err)
-    });
+    try {
+        const panel = await Panel.find();
+    
+        res.json({
+            "panel": panel
+        });
+        
+    } catch (error) {
+        res.status(400).json(error);
+    }
 
+});
+
+// Retrieve specific panel data
+router.route('/edit/:id').get(async(req, res) => {
+
+    const id = req.params.id;
+
+    try{
+        const panel = await Panel.findOne({_id:id});
+        res.json(panel);
+        
+    }catch (error) {
+        console.log(error)
+        res.status(400).json(error);
+    }
 });
 
 // Update the panel
