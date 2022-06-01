@@ -18,6 +18,7 @@ import StudentManagement from '../src/pages/Admin/StudentManagement/student';
 import UpdateStudentManagement from '../src/pages/Admin/StudentManagement/updateStudent';
 import PanelManagement from '../src/pages/Admin/StaffManagement/panel';
 import UpdatePanelManagement from '../src/pages/Admin/StaffManagement/updatePanel';
+import AssignPanel from '../src/pages/Admin/StudentManagement/panel';
 
 
 function App() {
@@ -45,7 +46,7 @@ function App() {
              <Route path='/admin/studentmng/viewstudents/edit/:id' element={<UpdateStudentManagement/>} exact/>
              <Route path='/admin/staffmng/panel' element={<PanelManagement/>} exact/>
              <Route path='/admin/staffmng/panel/edit/:id' element={<UpdatePanelManagement/>} exact/>
-             
+             <Route path='/admin/studentmng/assignpanel' element={<AssignPanel/>} exact/>
 
         </Routes>
        <Footer/>
