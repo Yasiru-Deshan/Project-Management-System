@@ -1,15 +1,34 @@
 const router = require("express").Router();
-// const Student = require("../models/Student");
+const Student = require("../models/Student");
 
 // Retrive the student details
 router.route("/view").get( async(req,res)=>{
+    try {
+        const student = await Student.find();
+    
+        res.json({
+            "student": student
+        });
+        
+    } catch (error) {
+        res.status(400).json(error);
+    }
 
-    Student.find().then((student)=>{
-        res.json(student);
-    }).catch((err)=>{
-        console.log(err);
-    });
+});
 
+// Retrieve specific student member
+router.route('/edit/:id').get(async(req, res) => {
+
+    const id = req.params.id;
+
+    try{
+        const staff = await Student.findOne({_id:id});
+        res.json(staff);
+        
+    }catch (error) {
+        console.log(error)
+        res.status(400).json(error);
+    }
 });
 
 // Update the student member
@@ -39,4 +58,4 @@ router.route("/delete/:id").delete( async(req,res)=>{
     }
 });
 
-// module.exports = router;
+module.exports = router;
