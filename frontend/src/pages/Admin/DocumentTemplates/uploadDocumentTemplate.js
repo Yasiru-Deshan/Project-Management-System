@@ -84,79 +84,78 @@ export default function CreateDocumentTemplate(props){
 
   return (
     <div className="it19184722-myForm-adminDashboard">
-        <h2 className="it19184722-h2">Marking Schemes Management</h2>
+        <h2 className="it19184722-h2">Document & Presentation Templates Management</h2>
         <HeroBg/>
         <Form className="form-group it19184722-myForm" onSubmit={handleOnSubmit}>
-        {errorMsg && <p className="errorMsg">{errorMsg}</p>}
-        <h2>Upload Marking Scheme</h2>
-        <Row>
-          <Col>
-            <Form.Group controlId="title">
-            <label>Enter Title</label>
-              <Form.Control
-                type="text"
-                name="title"
-                value={state.title || ''}
-                placeholder="Enter title"
-                required
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Form.Group controlId="description">
-            <label>Enter Description</label>
-              <Form.Control
-                type="text"
-                name="description"
-                value={state.description || ''}
-                placeholder="Enter description"
-                required
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-        <br/>
-        <div className="upload-section">
-          <Dropzone
-            onDrop={onDrop}
-            onDragEnter={() => updateBorder('over')}
-            onDragLeave={() => updateBorder('leave')}
-          >
-            {({ getRootProps, getInputProps }) => (
-              <div {...getRootProps({ className: 'drop-zone' })} ref={dropRef}>
-                <input {...getInputProps()} />
-                <p>Drag and drop a file OR click here to select a file</p>
-                {file && (
-                  <div>
-                    <strong>Selected file:</strong> {file.name}
-                  </div>
-                )}
-              </div>
+          {errorMsg && <p className="errorMsg">{errorMsg}</p>}
+          <h2>Upload Template</h2>
+          <Row>
+            <Col>
+              <Form.Group controlId="title">
+                <label>Enter Title</label>
+                <Form.Control
+                  type="text"
+                  name="title"
+                  value={state.title || ''}
+                  placeholder="Enter title"
+                  required
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group controlId="description">
+                <label>Enter Description</label>
+                <Form.Control
+                  type="text"
+                  name="description"
+                  value={state.description || ''}
+                  placeholder="Enter description"
+                  required
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <br/>
+          <div className="upload-section">
+            <Dropzone
+              onDrop={onDrop}
+              onDragEnter={() => updateBorder('over')}
+              onDragLeave={() => updateBorder('leave')}>
+              {({ getRootProps, getInputProps }) => (
+                <div {...getRootProps({ className: 'drop-zone' })} ref={dropRef}>
+                  <input {...getInputProps()} />
+                  <p>Drag and drop a file OR click here to select a file</p>
+                  {file && (
+                    <div>
+                      <strong>Selected file:</strong> {file.name}
+                    </div>
+                  )}
+                </div>
+              )}
+            </Dropzone>
+            {previewSrc ? (
+              isPreviewAvailable ? (
+                <div>
+                  <img className="it19184722-myForm" src={previewSrc} alt="Preview" />
+                </div>
+              ) : (
+                <div className="preview-message">
+                  <p>No preview available for this file</p>
+                </div>
+              )
+              ) : (
+                <div className="preview-message">
+                  <p>Image preview will be shown here after selection</p>
+                </div>
             )}
-          </Dropzone>
-          {previewSrc ? (
-            isPreviewAvailable ? (
-              <div>
-                <img className="it19184722-myForm" src={previewSrc} alt="Preview" />
-              </div>
-            ) : (
-              <div className="preview-message">
-                <p>No preview available for this file</p>
-              </div>
-            )
-          ) : (
-            <div className="preview-message">
-              <p>Image preview will be shown here after selection</p>
-            </div>
-          )}
-        </div> 
-        <Button className="btn btn-success" type="submit">Upload</Button>
-        <input id="cancelButton2" type="button" value="Cancel" onClick={cancelReset} className="btn-danger it19184722-red-btn btn" />
-      </Form>
+          </div> 
+          <Button className="btn btn-success" type="submit">Upload</Button>
+          <input id="cancelButton2" type="button" value="Cancel" onClick={cancelReset} className="btn-danger it19184722-red-btn btn" />
+        </Form>
     </div>
   );
 };
