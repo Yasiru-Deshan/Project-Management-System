@@ -27,7 +27,7 @@ export default function Dashboard(){
             <div className="card">
                 <div className="content">
                 <h2 className="title">Document Templates</h2>
-                <button href="#" className="btn btn-danger">View</button>
+                <Link to='/admin/doctemplate/view'><button href="#" className="btn btn-danger">View</button></Link>
                 </div>
             </div>
             <div className="card">
@@ -39,7 +39,7 @@ export default function Dashboard(){
             <div className="card">
                 <div className="content">
                 <h2 className="title">Submission Types</h2>
-                <button href="#" className="btn btn-danger">View</button>
+                <Link to='/admin/submissions/view'><button href="#" className="btn btn-danger">View</button></Link>
                 </div>
             </div>
             </main>

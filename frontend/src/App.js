@@ -20,7 +20,11 @@ import PanelManagement from '../src/pages/Admin/StaffManagement/panel';
 import UpdatePanelManagement from '../src/pages/Admin/StaffManagement/updatePanel';
 import AssignPanel from '../src/pages/Admin/StudentManagement/panel';
 import UploadMarkingScheme from '../src/pages/Admin/MarkingSchemes/uploadMarkingScheme';
-import ViewMarkingSchemes from './pages/Admin/MarkingSchemes/viewMarkingSchemes';
+import ViewMarkingSchemes from '../src/pages/Admin/MarkingSchemes/viewMarkingSchemes';
+import UploadDocumentTemplates from '../src/pages/Admin/DocumentTemplates/uploadDocumentTemplate';
+import ViewDocumentTemplates from '../src/pages/Admin/DocumentTemplates/viewDocumentTemplates';
+import UploadSubmission from '../src/pages/Admin/Submissions/uploadSubmission';
+import ViewSubmissions from '../src/pages/Admin/Submissions/viewSubmissions';
 
 
 function App() {
@@ -49,9 +53,13 @@ function App() {
              <Route path='/admin/staffmng/panel' element={<PanelManagement/>} exact/>
              <Route path='/admin/staffmng/panel/edit/:id' element={<UpdatePanelManagement/>} exact/>
              <Route path='/admin/studentmng/assignpanel' element={<AssignPanel/>} exact/>
+             <Route path='/admin/doctemplate/upload' element={<UploadDocumentTemplates/>} exact/>
+             <Route path='/admin/doctemplate/view' element={<ViewDocumentTemplates/>} exact/>
              <Route path='/admin/markingschemes/upload' element={<UploadMarkingScheme/>} exact/>
              <Route path='/admin/markingschemes/view' element={<ViewMarkingSchemes/>} exact/>
-             
+             <Route path='/admin/submissions/upload' element={<UploadSubmission/>} exact/>
+             <Route path='/admin/submissions/view' element={<ViewSubmissions/>} exact/>
+
         </Routes>
        <Footer/>
     </Router>
