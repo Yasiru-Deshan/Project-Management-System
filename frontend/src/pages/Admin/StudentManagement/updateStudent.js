@@ -28,7 +28,6 @@ export default function UpdateCustomer() {
 
         const response = await axios.put(`http://localhost:8070/admin/studentmng/viewstudents/edit/${id}`, {fname, lname, email, phoneNo})
             if(response){
-                // localStorage.setItem('Customer record of ' +response.data.fname +', was updated successfully! 😃');
                 window.location = "/admin/studentmng/viewstudents";
             }
     });
@@ -51,9 +50,9 @@ export default function UpdateCustomer() {
                 <input className="form-control" type="email" name="email" required onChange={(e) => {setemail(e.target.value);}} value={email} /><br/>
                 <label>Phone No</label>
                 <input className="form-control" type="text" name="phoneNo" required onChange={(e) => {setphone(e.target.value);}} value={phoneNo} /><br/>
-                <button className="btn it19184722-green-btn it19184722-mybtn" id="customerEditBtn">Update</button>
+                <button className="btn btn-success" id="customerEditBtn">Update</button>
                 <input id="cancelButton2" type="button" value="Cancel" onClick={cancel} className="btn-danger it19184722-red-btn btn" />       
             </form>
         </div>
     )
-    }
+}
