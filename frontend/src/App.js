@@ -19,6 +19,8 @@ import UpdateStudentManagement from '../src/pages/Admin/StudentManagement/update
 import PanelManagement from '../src/pages/Admin/StaffManagement/panel';
 import UpdatePanelManagement from '../src/pages/Admin/StaffManagement/updatePanel';
 import AssignPanel from '../src/pages/Admin/StudentManagement/panel';
+import UploadMarkingScheme from '../src/pages/Admin/MarkingSchemes/uploadMarkingScheme';
+import ViewMarkingSchemes from './pages/Admin/MarkingSchemes/viewMarkingSchemes';
 
 
 function App() {
@@ -47,7 +49,9 @@ function App() {
              <Route path='/admin/staffmng/panel' element={<PanelManagement/>} exact/>
              <Route path='/admin/staffmng/panel/edit/:id' element={<UpdatePanelManagement/>} exact/>
              <Route path='/admin/studentmng/assignpanel' element={<AssignPanel/>} exact/>
-
+             <Route path='/admin/markingschemes/upload' element={<UploadMarkingScheme/>} exact/>
+             <Route path='/admin/markingschemes/view' element={<ViewMarkingSchemes/>} exact/>
+             
         </Routes>
        <Footer/>
     </Router>

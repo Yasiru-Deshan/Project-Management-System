@@ -190,6 +190,8 @@
   }
   .it19184722-headerSection #it19184722-search-filter {
     float: right;
+    margin-right: 100px;
+    margin-top: 30px;
     width: 25%;
   }
   .it19184722-headerSection .it19184722-green-btn {
@@ -198,6 +200,7 @@
     float: left;
   }
   .it19184722-trans-green-btn {
+    margin-left: 50px;
     background-color: transparent;
     border: 2px #4caf50 solid;
     color: #4caf50;

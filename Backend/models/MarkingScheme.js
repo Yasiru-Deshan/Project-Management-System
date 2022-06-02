@@ -12,10 +12,6 @@ const markingScheme = mongoose.Schema(
       required: true,
       trim: true
     },
-    deadline: {
-      type: Date,
-      required: true,
-    },
     file_path: {
       type: String,
       required: true

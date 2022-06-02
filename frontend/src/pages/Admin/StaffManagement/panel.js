@@ -64,7 +64,7 @@ export default function UpdateCustomer() {
                 <input className="form-control" type="text" name="supervisor_03" required onChange={(e) => {setSupervisor_03(e.target.value);}} value={supervisor_03} /><br/>
                 <label>Fourth Supervisor Name</label>
                 <input className="form-control" type="text" name="supervisor_04" required onChange={(e) => {setSupervisor_04(e.target.value);}} value={supervisor_04} /><br/>
-                <button className="btn it19184722-green-btn it19184722-mybtn" id="customerEditBtn">Create</button>
+                <button className="btn btn-success" id="customerEditBtn">Create</button>
                 <input id="cancelButton2" type="button" value="Cancel" onClick={cancelReset} className="btn-danger it19184722-red-btn btn" />       
             </form>
             <div className="it19184722-myTable">
@@ -72,10 +72,10 @@ export default function UpdateCustomer() {
             <thead className="it19184722-thead">
                 <tr >
                     <th className="it19184722-th">Panel Name</th>
-                    <th className="it19184722-th">First Supervisor Name</th>
-                    <th className="it19184722-th">Second Supervisor Name</th>
-                    <th className="it19184722-th">Third Supervisor Name</th>
-                    <th className="it19184722-th">Fourth Supervisor Name</th>
+                    <th className="it19184722-th">1st Supervisor Name</th>
+                    <th className="it19184722-th">2nd Supervisor Name</th>
+                    <th className="it19184722-th">3rd Supervisor Name</th>
+                    <th className="it19184722-th">4th Supervisor Name</th>
                     <th className="it19184722-th">Action</th>
 
                 </tr>

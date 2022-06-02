@@ -33,7 +33,7 @@ export default function Dashboard(){
             <div className="card">
                 <div className="content">
                 <h2 className="title">Marking Schemes</h2>
-                <button href="#" className="btn btn-danger">View</button>
+                <Link to='/admin/markingschemes/view'><button href="#" className="btn btn-danger">View</button></Link>
                 </div>
             </div>
             <div className="card">
