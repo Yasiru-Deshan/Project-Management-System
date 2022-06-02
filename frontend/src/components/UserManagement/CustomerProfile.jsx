@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { NotificationContext } from '../../context/NotificationContext';
+import Card from 'react-bootstrap/Card';
 
 const CustomerProfile = (props) => {
 	const notification = useContext(NotificationContext);
@@ -97,31 +98,37 @@ const CustomerProfile = (props) => {
 	};
 
 	return (
-		<div className='container pb-5'>
-			<div className='row justify-content-center pb-5'>
-				<div className='col-lg-6  col-md-6 col-sm-12 col-xs-12 background-border'>
-					<div className='row m-2 text-center'>
-						<h3>{role === 'admin' ? 'Customer' : 'My'} profile</h3>
-					</div>
+		<div style={{background: '#7F00FF',  /* fallback for old browsers */
+                     background: '-webkit-linear-gradient(to left, #7F00FF,#E100FF)',  /* Chrome 10-25, Safari 5.1-6 */
+                     background: 'linear-gradient(to left,#7F00FF, #E100FF)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}}>
+            <div className='row justify-content-center'>
+		            <Card className="text-center" 
+                    style={{ width: '30rem',
+                             marginTop: '10rem',
+                             marginBottom: '5rem', 
+                             boxShadow: '5px 8px 35px ',
+                             borderRadius: '20px',
+                             padding: '30px'}}>
+			
+			
+					
+						<h3>My profile</h3>
+					
 					<hr />
-					<div className='row  text-center mb-5 justify-content-center'>
-						{toggle ? (
+					
+						<center>
 							<img
 								src={profilePic}
 								alt=''
-								width='100'
+								width='200'
+								height='200'
 								className='img-fluid  rounded-circle mb-3 img-thumbnail shadow-sm'
 							/>
-						) : (
-							<img
-								src={customer.image.replace(/\s+/g, '%20')}
-								alt=''
-								className='avatar-image mb-2 '
-							/>
-						)}
+						</center>
 
-						{role === 'user' ? (
-							toggle ? (
+						
+							{toggle ? (
 								<React.Fragment>
 									<form method='post' onSubmit={handleSubmit}>
 										<div
@@ -150,17 +157,18 @@ const CustomerProfile = (props) => {
 									</button>
 								</React.Fragment>
 							) : (
+								<center>
 								<button
 									className='btn btn-primary'
+									style={{width:'200px'}}
 									onClick={() => setToggle(true)}>
 									Change profile picture
-								</button>
+								</button></center>
 							)
-						) : (
-							''
-						)}
+						 }
 
-						<div className='row'>
+
+						<div className='row' style={{marginTop:'50px'}}>
 							<div className='col-6 col-xs-6 col-md-6 text-start'>
 								Email
 							</div>
@@ -168,10 +176,22 @@ const CustomerProfile = (props) => {
 								{customer.email}
 							</div>
 							<div className='col-6 col-xs-6 col-md-6 text-start'>
-								Full Name:
+								Full Name
 							</div>
 							<div className='col-6 col-xs-6 col-md-6 text-start'>
 								{customer.firstName} {customer.lastName}
+							</div>
+							<div className='col-6 col-xs-6 col-md-6 text-start'>
+								Role
+							</div>
+							<div className='col-6 col-xs-6 col-md-6 text-start'>
+								{auth.role}
+							</div>
+							<div className='col-6 col-xs-6 col-md-6 text-start'>
+								Research Field
+							</div>
+							<div className='col-6 col-xs-6 col-md-6 text-start'>
+								{customer.field}
 							</div>
 							<div className='col-6 col-xs-6 col-md-6 text-start'>
 								Address
@@ -197,19 +217,14 @@ const CustomerProfile = (props) => {
 							<div className='col-6 col-xs-6 col-md-6 text-start'>
 								{customer.mobile}
 							</div>
-							<div className='col-6 col-xs-6 col-md-6 text-start'>
-								Package
-							</div>
-							<div className='col-6 col-xs-6 col-md-6 text-start'>
-								{customer.package
-									? customer.package.name
-									: 'Weekday'}
-							</div>
+
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+				
+				
+			
+		</Card>
+	   </div>
+	  </div>	
 	);
 };
 

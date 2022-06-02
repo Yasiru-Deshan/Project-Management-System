@@ -10,11 +10,12 @@ import UpdateCustomer from './components/UserManagement/UpdateCustomer';
 import CustomerProfile from './components/UserManagement/CustomerProfile';
 import TopicAccept from './components/Supervisor/TopicAccept';
 import Chat from './components/Chat/chat';
-import MyProfile from './pages/myProfile';
+import MyProfile from './pages/profile';
 import PanelMember from './pages/PanelMember';
 import SupervisorHome from './pages/Supervisor';
 import SignUp from './components/SignUp/signup';
 import EvaluationPage from './pages/evaluationPage';
+import Requests from './components/Requests';
 
 const getRoutes = (role, token) => {
 	let routes;
@@ -29,6 +30,9 @@ const getRoutes = (role, token) => {
 				</Route>
 				<Route exact path='/contact'>
 					<Contactus />
+				</Route>
+				 <Route exact path='/profile/:id'>
+					<MyProfile />
 				</Route>
 				<Route
 					exact
@@ -51,13 +55,21 @@ const getRoutes = (role, token) => {
 				<Route exact path='/myprofile'>
 					<CustomerProfile />
 				</Route>
-				<Route exact path='/contact'>
-					<Contactus />
+				<Route exact path='/requests'>
+					<Requests />
 				</Route>
 			
-				<Route exact path='/login'>
-					<Homepage />
+				<Route exact path='/'>
+					<SupervisorHome />
 				</Route>
+				 <Route exact path='/profile/:id'>
+					<MyProfile />
+				</Route>
+				<Route
+					exact
+					path='/customer-profile'
+					component={CustomerProfile}
+				/>
 				<Redirect to='/'></Redirect>
 			</Switch>
 		);
@@ -73,24 +85,24 @@ const getRoutes = (role, token) => {
 				<Route exact path='/chat'>
 					<Chat />
 				</Route>
-				<Route exact path='/evaluation'>
+				<Route exact path='/evaluation/:id'>
 					<EvaluationPage />
 				</Route>
                 <Route exact path='/myprofile'>
 					<MyProfile />
 				</Route>
-				<Route
-					exact
-					path='/update-customer'
-					component={UpdateCustomer}
-				/>
+				<Route exact path='/requests'>
+					<Requests />
+				</Route>
 				<Route
 					exact
 					path='/customer-profile'
 					component={CustomerProfile}
 				/>
 
-			
+                 <Route exact path='/profile/:id'>
+					<MyProfile />
+				</Route>
 
 				<Route exact path='/about'>
 					<Aboutus />
@@ -110,7 +122,9 @@ const getRoutes = (role, token) => {
 				<Route exact path='/'>
 					<Login />
 				</Route>
-				
+			    <Route exact path='/profile/:id'>
+					<MyProfile />
+				</Route>
 				<Route exact path='/signup'>
 					<SignUp />
 				</Route>

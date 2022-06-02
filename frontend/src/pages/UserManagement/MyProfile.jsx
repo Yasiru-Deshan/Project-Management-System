@@ -101,13 +101,13 @@ const CustomerProfile = (props) => {
 			<div className='row justify-content-center pb-5'>
 				<div className='col-lg-6  col-md-6 col-sm-12 col-xs-12 background-border'>
 					<div className='row m-2 text-center'>
-						<h3>{role === 'admin' ? 'Customer' : 'My'} profile</h3>
+						<h3>My profile</h3>
 					</div>
 					<hr />
 					<div className='row  text-center mb-5 justify-content-center'>
 						{toggle ? (
 							<img
-								src={profilePic}
+								src={image}
 								alt=''
 								width='100'
 								className='img-fluid  rounded-circle mb-3 img-thumbnail shadow-sm'

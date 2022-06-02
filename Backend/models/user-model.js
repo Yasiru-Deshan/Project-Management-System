@@ -39,6 +39,13 @@ const UserSchema = mongoose.Schema({
 		type: String,
 		default: 'user'
 	},
+	field:{
+		type: String
+	},
+    requests:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Request'
+        }
 	
 });
 

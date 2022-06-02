@@ -5,7 +5,8 @@ const {
 	promoteUser,
     signUp,
 	updateUser,
-	getUsers,
+	getSuperVisors,
+	getAllUsers,
 	getProfile,
 	deleteCustomer,
 	uploadProfilePic
@@ -15,12 +16,13 @@ const Authentication = require('../middleware/Authentication');
 const instructorAuth = require('../middleware/InstructorAuthentication');
 const router = express.Router();
 
-router.get('/', getUsers);
+router.get('/', getSuperVisors);
+router.get('/all', getAllUsers);
 router.post('/login', login);
 router.post('/signup', signUp); //admin register
 router.post('/create', adminAuth, addUser);
 router.post('/promote', adminAuth, promoteUser);
-router.get('/myprofile',getProfile)
+router.get('/profile/:id',getProfile)
 router.put('/update', adminAuth, updateUser);
 router.put('/profilepic', Authentication, uploadProfilePic);
 router.delete('/delete', adminAuth, deleteCustomer);

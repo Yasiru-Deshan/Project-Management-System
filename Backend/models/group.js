@@ -1,0 +1,30 @@
+const mongoose = require('mongoose');
+const GroupSchema = mongoose.Schema({
+    groupName:{
+        type: String
+    },
+    groupId:{
+        type: String
+    },
+    evaluatedBy:{
+        type: String
+    },
+    status:{
+        type: Boolean
+    },
+    students:{
+        type: Array
+    },
+    marks:{
+        type: Number
+    },
+    docName:{
+        type: String
+    },
+    feedback:{
+        type: String
+    }
+    
+});
+
+module.exports = mongoose.model('Group', GroupSchema)

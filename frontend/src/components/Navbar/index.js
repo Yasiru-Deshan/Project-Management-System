@@ -93,18 +93,28 @@ const Navbar = ({ user,toggle}) => {
                                     offset={-80}>Chat</NavLinks>
                       </NavItem>
 					  )}
-                 {auth.isLoggedIn && (
+					  				 {auth.role === 'supervisor' && (
                       <NavItem>
-                          <NavLinks to='/'
+                          <NavLinks to="/requests"
                                     smooth={true} 
                                     duration={500} 
                                     spy={true} 
                                     exact='true' 
-                                    offset={-80}
-                                
-                                    >Notifications</NavLinks>
+                                    offset={-80}>Requests</NavLinks>
                       </NavItem>
 				 )}
+				
+				 {auth.role === 'cosupervisor' && (
+					 <NavItem>
+                          <NavLinks to="/requests"
+                                    smooth={true} 
+                                    duration={500} 
+                                    spy={true} 
+                                    exact='true' 
+                                    offset={-80}>Requests</NavLinks>
+                      </NavItem>
+					  )}
+ 
 
                  
                  
@@ -148,35 +158,21 @@ const Navbar = ({ user,toggle}) => {
 										className='dropdown-menu'
 										aria-labelledby='navbarDropdown'>
 										<li>
-											{auth.role === 'cosupervisor' ? (
+											
 												<Link
 													className='dropdown-item'
 													to={{
 														pathname:
-															'/myprofile',
+															'/customer-profile',
 														state: {
 															customer: auth.user
 														}
 													}}>
 													My Profile
 												</Link>
-											) : (
-												auth.role === 'supervisor' && (
-													<Link
-														className='dropdown-item'
-														to={{
-															pathname:
-																'/myprofile',
-															state: {
-																customer:
-																	auth.user,
-																role: auth.role
-															}
-														}}>
-														View Profile
-													</Link>
-												)
-											)}
+											
+										
+											
 											
 										</li>
 

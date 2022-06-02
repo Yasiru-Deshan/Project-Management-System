@@ -4,9 +4,9 @@ const bcrypt = require('bcryptjs');
 
 
 
-const getUsers = async (req, res, next) => {
+const getSuperVisors = async (req, res, next) => {
 	try {
-		const users = await User.find({ role: 'user' })
+		const users = await User.find({ role: 'supervisor' })
 			.select('-password')
 			.populate('package');
 
@@ -20,6 +20,17 @@ const getUsers = async (req, res, next) => {
 	} catch (err) {
 		return res.status(500).json({ msg: err });
 	}
+};
+
+//get topics
+const getAllUsers = async(req,res,next)=>{
+
+     User.find().then((topics)=>{
+         res.json(topics)
+     }).catch((err)=>{
+         console.log(err)
+     })
+
 };
 
 const login = async (req, res, next) => {
@@ -65,9 +76,9 @@ const login = async (req, res, next) => {
 
 //get user by id
 const getProfile = async (req, res, next) => {
-    const adminId = req.user.id;
+    const Id = req.params.id;
     try{
-        const profile = await User.findById(adminId);
+        const profile = await User.findById(Id);
          res.status(200).json(profile);
     }catch(err){
         res.status(500).json(err);
@@ -315,7 +326,8 @@ const deleteCustomer = async (req, res, next) => {
 	}
 };
 
-exports.getUsers = getUsers;
+exports.getSuperVisors = getSuperVisors;
+exports.getAllUsers = getAllUsers;
 exports.login = login;
 exports.addUser = addUser;
 exports.promoteUser = promoteUser;
