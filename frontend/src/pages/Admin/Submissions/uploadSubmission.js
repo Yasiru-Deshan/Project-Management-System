@@ -84,11 +84,11 @@ export default function CreateSubmission(props){
 
   return (
     <div className="it19184722-myForm-adminDashboard">
-        <h2 className="it19184722-h2">Marking Schemes Management</h2>
+        <h2 className="it19184722-h2">Submission Management</h2>
         <HeroBg/>
         <Form className="form-group it19184722-myForm" onSubmit={handleOnSubmit}>
         {errorMsg && <p className="errorMsg">{errorMsg}</p>}
-        <h2>Upload Marking Scheme</h2>
+        <h2>Upload Submission</h2>
         <Row>
           <Col>
             <Form.Group controlId="title">

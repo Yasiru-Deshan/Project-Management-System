@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios'
 import { HeroBg } from '../../../components/Supervisor/HeroSection/HeroElements';
 import './styles.css';
