@@ -17,8 +17,15 @@ import UpdateStaffManagement from '../src/pages/Admin/StaffManagement/updateStaf
 import StudentManagement from '../src/pages/Admin/StudentManagement/student';
 import UpdateStudentManagement from '../src/pages/Admin/StudentManagement/updateStudent';
 import PanelManagement from '../src/pages/Admin/StaffManagement/panel';
+import CreatePanel from '../src/pages/Admin/StaffManagement/createPanel';
 import UpdatePanelManagement from '../src/pages/Admin/StaffManagement/updatePanel';
 import AssignPanel from '../src/pages/Admin/StudentManagement/panel';
+import UploadMarkingScheme from '../src/pages/Admin/MarkingSchemes/uploadMarkingScheme';
+import ViewMarkingSchemes from '../src/pages/Admin/MarkingSchemes/viewMarkingSchemes';
+import UploadDocumentTemplates from '../src/pages/Admin/DocumentTemplates/uploadDocumentTemplate';
+import ViewDocumentTemplates from '../src/pages/Admin/DocumentTemplates/viewDocumentTemplates';
+import UploadSubmission from '../src/pages/Admin/Submissions/uploadSubmission';
+import ViewSubmissions from '../src/pages/Admin/Submissions/viewSubmissions';
 
 
 function App() {
@@ -45,8 +52,16 @@ function App() {
              <Route path='/admin/studentmng/viewstudents' element={<StudentManagement/>} exact/>
              <Route path='/admin/studentmng/viewstudents/edit/:id' element={<UpdateStudentManagement/>} exact/>
              <Route path='/admin/staffmng/panel' element={<PanelManagement/>} exact/>
+             <Route path='/admin/staffmng/panel/create' element={<CreatePanel/>} exact/>
+
              <Route path='/admin/staffmng/panel/edit/:id' element={<UpdatePanelManagement/>} exact/>
              <Route path='/admin/studentmng/assignpanel' element={<AssignPanel/>} exact/>
+             <Route path='/admin/doctemplate/upload' element={<UploadDocumentTemplates/>} exact/>
+             <Route path='/admin/doctemplate/view' element={<ViewDocumentTemplates/>} exact/>
+             <Route path='/admin/markingschemes/upload' element={<UploadMarkingScheme/>} exact/>
+             <Route path='/admin/markingschemes/view' element={<ViewMarkingSchemes/>} exact/>
+             <Route path='/admin/submissions/upload' element={<UploadSubmission/>} exact/>
+             <Route path='/admin/submissions/view' element={<ViewSubmissions/>} exact/>
 
         </Routes>
        <Footer/>

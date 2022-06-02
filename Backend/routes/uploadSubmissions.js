@@ -29,12 +29,11 @@ const upload = multer({
 
 router.post('/upload', upload.single('file'), async (req, res) => {
     try {
-      const { title, description, deadline } = req.body;
+      const { title, description } = req.body;
       const { path, mimetype } = req.file;
       const file = new File({
         title,
         description,
-        deadline,
         file_path: path,
         file_mimetype: mimetype
       });
