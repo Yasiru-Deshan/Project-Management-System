@@ -78,7 +78,7 @@ export default function AssignPanel(){
           const doc = new jsPDF({orientation:"portrait"});
           var time = new Date().toLocaleString();
           doc.setFontSize(20);
-          doc.text(`Student Groups Report`, 105, 13, null, null, "center");
+          doc.text(`Students Group Report`, 105, 13, null, null, "center");
           doc.setFontSize(10);
           doc.text(`(Generated on ${time})`, 105, 17, null, null, "center");
           doc.setFontSize(12);
@@ -100,7 +100,7 @@ export default function AssignPanel(){
         return (
         <body className="it19184722-myForm-adminDashboard">
             <HeroBg/>
-            <h2 className="it19184722-h2">Student Group Management</h2>
+            <h2 className="it19184722-h2">Students Group Management</h2>
 
             {/* Generate Report */}
             <div className="it19184722-headerSection">

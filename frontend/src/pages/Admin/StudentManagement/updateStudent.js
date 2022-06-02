@@ -28,7 +28,6 @@ export default function UpdateCustomer() {
 
         const response = await axios.put(`http://localhost:8070/admin/studentmng/viewstudents/edit/${id}`, {fname, lname, email, phoneNo})
             if(response){
-                // localStorage.setItem('Customer record of ' +response.data.fname +', was updated successfully! 😃');
                 window.location = "/admin/studentmng/viewstudents";
             }
     });
@@ -56,4 +55,4 @@ export default function UpdateCustomer() {
             </form>
         </div>
     )
-    }
+}

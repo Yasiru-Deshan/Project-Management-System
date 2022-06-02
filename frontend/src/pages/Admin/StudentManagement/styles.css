@@ -87,9 +87,11 @@
   .it19184722-btn {
     margin: 5px;
   }
+
   .it19184722-btn:hover {
     color: black;
   }
+
   .it19184722-green-btn {
     background-color: #4caf50;
     color: white;
@@ -97,21 +99,26 @@
     margin-right: 5px;
     border: #4caf50 2px solid;
   }
+
   .it19184722-myForm h2 {
     text-align: center;
     font-weight: bolder;
   }
+
   .it19184722-btn-section {
     text-align: center;
   }
+
   #it19184722-logout-btn {
     display: block;
     margin: 20px auto;
   }
+
   .it19184722-myForm .it19184722-mybtn {
     display: block;
     margin: 5px auto;
   }
+
   .it19184722-center-text {
     text-align: center;
   }
@@ -135,6 +142,7 @@
     overflow: hidden;
     box-shadow: 5px 8px 20px #888888;
   }
+
   .it19184722-td,
   .it19184722-th {
     /* border: 1px solid black; */
@@ -148,11 +156,13 @@
     padding: 10px;
     font-family: sans-serif;
   }
+
   .it19184722-td {
     font-weight: normal;
     border-bottom: 1px #dedede solid;
     font-family: sans-serif;
   }
+
   .it19184722-tbody {
     background-color: #ededed;
   }
@@ -161,13 +171,16 @@
     margin-top: 10px;
     margin-bottom: 10px;
   }
+
   .it19184722-btn-section .it19184722-green-btn {
     margin: 0;
   }
+
   .it19184722-ash-btn {
     background-color: #828282;
     color: white;
   }
+
   .it19184722-td .it19184722-mybtn {
     margin: 2px auto;
     text-align: center;
@@ -178,10 +191,12 @@
     display: flex;
     justify-content: center;
   }
+
   .it19184722-thead {
     background-color: #194775;
     color: white;
   }
+
   .it19184722-h2 {
     margin-top: 100px;
     text-align: center;
@@ -190,10 +205,12 @@
     color: whitesmoke;
     font-family: sans-serif;
   }
+
   .it19184722-headerSection {
     width: 100%;
     margin-bottom: 20px;
   }
+
   .it19184722-headerSection #it19184722-search-filter {
     float: right;
     margin-right: 100px;
@@ -201,36 +218,44 @@
     margin-bottom: 20px;
     width: 25%;
   }
+
   .it19184722-headerSection .it19184722-green-btn {
     margin: 0;
     margin-right: 5px;
     float: left;
   }
+
   .it19184722-trans-green-btn {
     margin-left: 50px;
     background-color: transparent;
     border: 2px #4caf50 solid;
     color: #4caf50;
   }
+
   .it19184722-trans-green-btn:hover {
     background-color: #4caf50;
     color: white;
   }
+
   .it19184722-containner {
     width: 82%;
     margin: 0 auto;
   }
+
   .it19184722-link {
     color: #10a115;
   }
+
   .it19184722-link:hover {
     color: #2b5c2d;
   }
+
   .it19184722-green-btn:hover {
     background-color: #4caf50;
     border: 2px #4caf50 solid;
     color: #4caf50;
   }
+  
   .it19184722-red-btn:hover {
     background-color: transparent;
     color: red;
