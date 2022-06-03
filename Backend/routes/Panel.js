@@ -71,7 +71,6 @@ router.route("/edit/:id").put( async(req,res)=>{
    }
 })
 
-
 // Delete the panel
 router.route("/delete/:id").delete( async(req,res)=>{
 

@@ -27,6 +27,7 @@ const upload = multer({
   }
 });
 
+// Insert new template
 router.post('/upload', upload.single('file'), async (req, res) => {
     try {
       const { title, description } = req.body;
@@ -50,6 +51,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
   }
 );
 
+// Fetching all the template files
 router.get('/getAllFiles', async (req, res) => {
   try {
     const files = await File.find({});
@@ -62,7 +64,7 @@ router.get('/getAllFiles', async (req, res) => {
   }
 });
 
-
+// Delete the existing template file
 router.route("/delete/:id").delete( async(req,res)=>{
 
   try{
@@ -75,17 +77,17 @@ router.route("/delete/:id").delete( async(req,res)=>{
   }
 });
 
-
-// router.get('/download/:id', async (req, res) => {
-//   try {
-//     const file = await File.findById(req.params.id);
-//     res.set({
-//       'Content-Type': file.file_mimetype
-//     });
-//     res.sendFile(path.join(__dirname, '..', file.file_path));
-//   } catch (error) {
-//     res.status(400).send('Error while downloading file. Try again later.');
-//   }
-// });
+// Download existing template file
+router.get('/download/:id', async (req, res) => {
+  try {
+    const file = await File.findById(req.params.id);
+    res.set({
+      'Content-Type': file.file_mimetype
+    });
+    res.sendFile(path.join(__dirname, '..', file.file_path));
+  } catch (error) {
+    res.status(400).send('Error while downloading file. Try again later.');
+  }
+});
 
 module.exports = router;

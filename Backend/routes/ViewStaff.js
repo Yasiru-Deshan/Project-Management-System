@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Staff = require("../models/Staff");
+const Staff = require("../models/staff");
 
 // Retrive the staff details
 router.route('/view').get(async(req, res) => {

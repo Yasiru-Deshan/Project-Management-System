@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const multer = require('multer');
 
-const File = require('../models/MarkingScheme');
+const File = require('../models/markingScheme');
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -27,6 +27,7 @@ const upload = multer({
   }
 });
 
+// Insert new marking scheme file
 router.post('/upload', upload.single('file'), async (req, res) => {
     try {
       const { title, description } = req.body;
@@ -50,6 +51,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
   }
 );
 
+// Fetching all the marking scheme files
 router.get('/getAllFiles', async (req, res) => {
   try {
     const files = await File.find({});
@@ -62,7 +64,7 @@ router.get('/getAllFiles', async (req, res) => {
   }
 });
 
-
+// Delete the existing marking scheme file
 router.route("/delete/:id").delete( async(req,res)=>{
 
   try{
@@ -75,6 +77,7 @@ router.route("/delete/:id").delete( async(req,res)=>{
   }
 });
 
+// Delete the existing marking scheme file
 router.get('/download/:id', async (req, res) => {
   try {
     const file = await File.findById(req.params.id);
