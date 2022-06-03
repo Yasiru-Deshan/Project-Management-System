@@ -10,8 +10,18 @@ export default function UpdatePanel() {
     const [supervisor_02, setSupervisor_02] = useState("");
     const [supervisor_03, setSupervisor_03] = useState("");
     const [supervisor_04, setSupervisor_04] = useState("");
-
+    const [staff, setStaff] = useState([]);
     const {id} = useParams();
+
+    // Fetching staff data
+    useEffect(() => {
+        async function fetchData(){
+            const response = await axios.get('http://localhost:8070/admin/staffmng/viewstaff/view');
+            setStaff(response.data.staff);
+        }
+        fetchData();
+    });
+    
 
     useEffect (() => {
         async function fetchData(){
@@ -47,13 +57,33 @@ export default function UpdatePanel() {
                 <label>Panel Name</label>
                 <input className="form-control" type="text" name="panel" placeholder='Enter panel name' required onChange={(e) => {setPanelName(e.target.value);}} value={panel} /><br/>
                 <label>First Supervisor Name</label>
-                <input className="form-control" type="text" name="supervisor_01" placeholder='Enter 1st supervisor name' required onChange={(e) => {setSupervisor_01(e.target.value);}} value={supervisor_01} /><br/>
+                <select className="form-control"  onChange={(e) => {setSupervisor_01(e.target.value);}} value={supervisor_01}>
+                    {staff.map((staff)=>                    
+                        <option value={staff.fname}>{staff.fname} {staff.lname}</option>
+                    )}
+                </select>
+                <br/>
                 <label>Second Supervisor Name</label>
-                <input className="form-control" type="text" name="supervisor_02" placeholder='Enter 2nd supervisor name' required onChange={(e) => {setSupervisor_02(e.target.value);}} value={supervisor_02} /><br/>
+                <select className="form-control"  onChange={(e) => {setSupervisor_02(e.target.value);}} value={supervisor_02}>
+                    {staff.map((staff)=>                  
+                        <option value={staff.fname}>{staff.fname} {staff.lname}</option>
+                    )}
+                </select>
+                <br/>
                 <label>Third Supervisor Name</label>
-                <input className="form-control" type="text" name="supervisor_03" placeholder='Enter 3rd supervisor name' required onChange={(e) => {setSupervisor_03(e.target.value);}} value={supervisor_03} /><br/>
+                <select className="form-control"  onChange={(e) => {setSupervisor_03(e.target.value);}} value={supervisor_03}>
+                    {staff.map((staff)=>                     
+                        <option value={staff.fname}>{staff.fname} {staff.lname}</option>
+                    )}
+                </select>
+                <br/>
                 <label>Fourth Supervisor Name</label>
-                <input className="form-control" type="text" name="supervisor_04" placeholder='Enter 4th supervisor name' required onChange={(e) => {setSupervisor_04(e.target.value);}} value={supervisor_04} /><br/>
+                <select className="form-control"  onChange={(e) => {setSupervisor_04(e.target.value);}} value={supervisor_04}>
+                    {staff.map((staff)=>                     
+                        <option value={staff.fname}>{staff.fname} {staff.lname}</option>
+                    )}
+                </select>
+                <br/>
                 <button className="btn btn-success" id="customerEditBtn">Update</button>
                 <input id="cancelButton2" type="button" value="Cancel" onClick={cancelReset} className="btn-danger it19184722-red-btn btn" />       
             </form>
