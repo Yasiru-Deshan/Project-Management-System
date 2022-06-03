@@ -1,6 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
+import {jsPDF} from 'jspdf';
+import 'jspdf-autotable';
 import { HeroBg } from '../../../components/Supervisor/HeroSection/HeroElements';
 import './styles.css';
 
@@ -28,18 +30,61 @@ export default function PanelManagement() {
             window.location = "/admin/staffmng/panel/";
         }    
     }
+
+    //report generation function
+    const pdf = () => {
+        const loading = document.getElementById('loading');
+        loading.style.display = "";//display loading icon
+        const dwnIcon = document.getElementById('dwn-icon');
+        dwnIcon.style.display = "none";//hide download icn
+
+        setTimeout(() => {  
+            loading.style.display = "none";
+            dwnIcon.style.display = "";
+        }, 1300);//display loading icon for 2 seconds  
+
+        let bodyData = [];
+        for(let i = 0; panels.length > i ; i++){
+            bodyData.push([panels[i].panel, panels[i].supervisor_01, panels[i].supervisor_02, panels[i].supervisor_03, panels[i].supervisor_04]);
+        }
+        
+        // Save json data to bodydata in order to print in the pdf table
+        const doc = new jsPDF({orientation:"portrait"});
+        var time = new Date().toLocaleString();
+        doc.setFontSize(25);
+        doc.text(`Panel Detail's Report`, 105, 12, null, null, "center");
+        doc.setFontSize(10);
+        doc.text(`(Generated on ${time})`, 105, 17, null, null, "center");
+        doc.setFontSize(12);
+        doc.text("Research Management Tool © 2022 All rights reserved", 105, 22, null, null, "center");
+        doc.autoTable({
+            theme : 'grid',
+            styles: {halign:'center'},
+            headStyles:{fillColor:[71, 201, 76]},
+            startY:27,
+            head: [['Panel Name','1st Supervisor Name', '2nd Supervisor Name', '3rd Supervisor Name', '4th Supervisor Name']],
+            body: bodyData
+        })
+        doc.save('PanelDetailsReport.pdf');
+    }
  
     return (
         <div className="it19184722-myForm-adminDashboard">
             <h2 className="it19184722-h2">Panel Management</h2>
             <HeroBg/>
-            <Link to="/admin/staffmng/panel/create" className="btn it19184722-green-btn-upload">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-plus-fill" viewBox="0 0 16 16">
-            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-            <path fillRule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
-            </svg>
-            Create new panel
-            </Link>
+            <div className="it19184722-headerSection">
+                <button onClick={pdf} className="btn it19184722-trans-green-btn">
+                <svg id="dwn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cloud-arrow-down-fill" viewBox="0 0 16 16">
+                <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z"/>
+                </svg><span className="spinner-border spinner-border-sm" id="loading" role="status" aria-hidden="true" style={{display:'none'}}></span> Download</button>
+                <Link to="/admin/staffmng/panel/create" className="btn it19184722-green-btn-upload">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path fillRule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+                Create new panel
+                </Link>
+            </div>
             <div className="it19184722-myTable">
                 <table className="it19184722-table">
                     <thead className="it19184722-thead">
