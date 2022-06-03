@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Student = require("../models/Student");
+const Student = require("../models/student");
 
 // Retrive the student details
 router.route("/view").get( async(req,res)=>{
