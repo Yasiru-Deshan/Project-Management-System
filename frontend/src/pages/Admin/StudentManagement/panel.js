@@ -135,6 +135,7 @@ export default function AssignPanel(){
                                                 {/* {assignpanel.map( (panel) =>
                                                     <option value={panel.panel}>{panel.panel}</option>
                                                 )} */}
+                                                <option value='Not Assigned'>Not Assigned</option>
                                                 <option value='Panel_01'>Panel_01</option>
                                                 <option value='Panel_02'>Panel_02</option>
                                                 <option value='Panel_03'>Panel_03</option>

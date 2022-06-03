@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Panel = require("../models/panel");
-const StudentGrp = require("../models/StudentGrp");
+const StudentGrp = require("../models/studentGrp");
 
 // Retrive the panel details
 router.route("/view").get( async(req,res)=>{
