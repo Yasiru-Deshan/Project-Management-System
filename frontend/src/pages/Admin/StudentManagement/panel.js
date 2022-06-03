@@ -139,7 +139,7 @@ export default function AssignPanel(){
                                                 <option value='Panel_01'>Panel_01</option>
                                                 <option value='Panel_02'>Panel_02</option>
                                                 <option value='Panel_03'>Panel_03</option>
-                                                <option value='Panel_04'>Panel_04</option>
+                                                {/* <option value='Panel_04'>Panel_04</option> */}
                                             </select>
                                             <button type="submit" onClick={() => assignPanel(stdGrp._id)} className="btn btn-primary assign-btn">Assign</button>
                                             </td>
