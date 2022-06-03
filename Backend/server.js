@@ -4,11 +4,11 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require('path');
+const passport = require('passport');
 const app = express(); 
 require("dotenv").config();
 
-//body parser middleware
-app.use
+
 
 //import topic routes
 const topicRoutes = require('./routes/Topic')
@@ -34,6 +34,9 @@ const studentProfile = require('./routes/studentProfile');
 //import student register profile route
 const requests = require('./routes/requests');
 
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const PORT = process.env.PORT||8070;
 
@@ -61,8 +64,14 @@ app.listen(PORT,()=>{
     console.log(`Server is up and running on port ${PORT}`)
 });
 
-app.use("/api/topics", topicRoutes);
+// Passport middleware
+app.use(passport.initialize());
 
+// Passport Config
+require('./config/passport')(passport);
+
+app.use("/api/topics", topicRoutes);
+app.use("/api/topics", topicRoutes);
 // Create routes to Panel - Admin side
 app.use("/admin/staffmng/panel", PanelRoute);
 // Create routes to Staff - Admin side
