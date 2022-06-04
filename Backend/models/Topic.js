@@ -14,7 +14,14 @@ const topicSchema = new mongoose.Schema(
         },
         status:{
             type: Boolean
-        }
+        },
+        approvedBy:{
+            type: String
+        },
+        feedback:{
+            type: String
+        },
+
            
     
     },
