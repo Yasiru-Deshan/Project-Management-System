@@ -1,4 +1,4 @@
-import React, { Component,useEffect,useState } from 'react'
+import React, { Component,useEffect,useState,useContext } from 'react'
 import Table from '../../common/table'; 
 import Like from '../../common/like';
 import Icon2 from '../../../images/svg-2.svg'
@@ -20,6 +20,7 @@ import Modal from 'react-modal';
 import axios from "axios";
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import {AuthContext} from './../../../context/AuthContext';
 
 function Home(){
 
@@ -34,12 +35,13 @@ function Home(){
    const [group,setGroup] = useState("");
    const [description,setDescription] = useState("");
    const [status,setStatus] = useState();
+   const auth = useContext(AuthContext);
   
 
    useEffect(()=>{
      
     const getTopics = ()=>{
-      axios.get('http://localhost:8070/api/topics/all').then((res)=>{
+      axios.get('http://localhost:5000/api/topics/all').then((res)=>{
           setTopicList(res.data);
       })
     }
@@ -128,17 +130,18 @@ function Home(){
                        </tbody>
                      </table>
                 </TableCard>
-                    <ServicesCard>
+                <Link to='/markings'>  <ServicesCard>
                     <ServicesIcon src={Icon2}/>
+                    
                     <HeroP>Marking Schemes</HeroP>
             
-                </ServicesCard>
-
-                <ServicesCard>
+                </ServicesCard></Link>
+{auth.role === 'supervisor' && (
+                <Link to='/final'><ServicesCard>
                     <ServicesIcon src={Icon3}/>
                     <HeroP>Final Evaluation</HeroP>
                    
-                </ServicesCard>
+                </ServicesCard></Link>)}
 
                 
                </ServicesWrapper>

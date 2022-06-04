@@ -4,7 +4,7 @@ import React from 'react';
 const Input = ({name, label, error, ...rest }) => {
     return ( 
         <div className="form-group">
-            <label htmlFor={name} style={{fontSize: '13px', color:'#6464F7'}}>{ label }</label>
+            <label htmlFor={name}>{ label }</label>
             <input 
                 {...rest}
                 id={name}

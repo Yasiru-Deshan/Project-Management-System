@@ -4,8 +4,11 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require('path');
+const passport = require('passport');
 const app = express(); 
 require("dotenv").config();
+
+
 
 //import topic routes
 const topicRoutes = require('./routes/Topic')
@@ -24,7 +27,16 @@ const UploadDocTemplate = require('./routes/uploadDocTemplates');
 const MarkingSchemes = require('./routes/uploadMarkingSchemes');
 // import Submissions routes - Admin Side
 const Submissions = require('./routes/uploadSubmissions');
+//import user route
+const users = require('./routes/users');
+//import request a superviosor route
+const studentProfile = require('./routes/studentProfile');
+//import student register profile route
+const requests = require('./routes/requests');
 
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const PORT = process.env.PORT||8070;
 
@@ -52,8 +64,14 @@ app.listen(PORT,()=>{
     console.log(`Server is up and running on port ${PORT}`)
 });
 
-app.use("/api/topics", topicRoutes);
+// Passport middleware
+app.use(passport.initialize());
 
+// Passport Config
+require('./config/passport')(passport);
+
+app.use("/api/topics", topicRoutes);
+app.use("/api/topics", topicRoutes);
 // Create routes to Panel - Admin side
 app.use("/admin/staffmng/panel", PanelRoute);
 // Create routes to Staff - Admin side
@@ -68,3 +86,9 @@ app.use("/admin/doctemplate", UploadDocTemplate);
 app.use("/admin/markingschemes", MarkingSchemes);
 // Create routes to upload marking schemes - Admin side
 app.use("/admin/submissions", Submissions);
+// user route
+app.use('/users',users);
+// request a superviosor route
+app.use('/studentProfile', studentProfile);
+// student register profile route
+app.use('/requests', requests);

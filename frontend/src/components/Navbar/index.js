@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import {FaBars} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
 import { IconContext } from 'react-icons/lib';
@@ -15,8 +15,11 @@ import { Nav,
          NavBtnLink,
          TopImg
         } from './NavbarElements'; 
+import { AuthContext } from '../../context/AuthContext';
+import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const Navbar = ({ toggle}) => {
+const Navbar = ({ user,toggle}) => {
 
     const [scrollNav,setScrollNav] = useState(false)
 
@@ -36,6 +39,13 @@ const Navbar = ({ toggle}) => {
         scroll.scrollToTop();
     }
 
+    const auth = useContext(AuthContext);
+
+	const signOut = () => {
+		auth.logout();
+		<Redirect to={'/login'} />;
+	};
+
     return (
         <>
         <IconContext.Provider value={{color: '#fff'}}>
@@ -49,7 +59,9 @@ const Navbar = ({ toggle}) => {
                       <FaBars />
                   </MobileIcon>
 
+                 
                   <NavMenu>
+                 {auth.isLoggedIn && (
                       <NavItem>
                         <NavLinks
                                     smooth={true} 
@@ -61,6 +73,8 @@ const Navbar = ({ toggle}) => {
                                     <Link to='/admin/dashboard'>Dashboard</Link>
                         </NavLinks>
                       </NavItem>
+				 )}
+				 {auth.role === 'supervisor' && (
                       <NavItem>
                           <NavLinks to="/chat"
                                     smooth={true} 
@@ -69,40 +83,126 @@ const Navbar = ({ toggle}) => {
                                     exact='true' 
                                     offset={-80}>Chat</NavLinks>
                       </NavItem>
-                      <NavItem>
-                          <NavLinks to="services"
+				 )}
+				
+				 {auth.role === 'cosupervisor' && (
+					 <NavItem>
+                          <NavLinks to="/chat"
                                     smooth={true} 
                                     duration={500} 
                                     spy={true} 
                                     exact='true' 
-                                    offset={-80}>Notifications</NavLinks>
+                                    offset={-80}>Chat</NavLinks>
                       </NavItem>
+					  )}
+					  				 {auth.role === 'supervisor' && (
                       <NavItem>
-                          <NavLinks to="signup"
+                          <NavLinks to="/requests"
                                     smooth={true} 
                                     duration={500} 
                                     spy={true} 
                                     exact='true' 
-                                    offset={-80}>Sign Up</NavLinks>
+                                    offset={-80}>Requests</NavLinks>
                       </NavItem>
+				 )}
+				
+				 {auth.role === 'cosupervisor' && (
+					 <NavItem>
+                          <NavLinks to="/requests"
+                                    smooth={true} 
+                                    duration={500} 
+                                    spy={true} 
+                                    exact='true' 
+                                    offset={-80}>Requests</NavLinks>
+                      </NavItem>
+					  )}
+ 
 
-                  </NavMenu>
+                 
+                 
+                 {!auth.isLoggedIn && (
                   <NavBtn>
-                      <NavBtnLink to='/signin'>Sign In</NavBtnLink>
+                      <NavBtnLink 
+                        to='/register'
+                        >Sign Up</NavBtnLink>
                   </NavBtn>
-                  <NavBtn>
-                      {/* <img width="100" height="100" style={{backgroundImage: `url(${background})`,
-                                      width: '145px',
-                                      height: '45px',
-                                      
-                                      borderRadius: '50%'
-                                 }}
-                           /> */}
-                          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" class="bi bi-person" viewBox="0 0 16 16">
-  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-</svg>
-                  </NavBtn>
+                 )}
+                  
+               
+                   
+                            
+                       
+	{auth.isLoggedIn && auth.token != null && (
+							<ul className='navbar-nav ms-auto mb-2 mb-lg-0 dropleft'>
+								<li className='nav-item dropdown '>
+									<div
+										className='nav-link dropdown-toggle'
+										id='navbarDropdown'
+										role='button'
+										data-bs-toggle='dropdown'
+										aria-expanded='false'
+										style={{color:'white'}}>
+										<img
+											src={
+												auth.user
+													? auth.user.image.replace(
+															/\s+/g,
+															'%20'
+													  )
+													: 'https://lh3.googleusercontent.com/proxy/hZZ-VMxK16FXsVbvPxckcMuoQq0Ip8fK8q6y0VpzUMzrK13OjohEZBRJRZIqPB-p1M7XuAsBadS1_7zsgE2bsIGXd-iU2BJ8I31LpTcbp6yANoDNwntqvU0iMTnsDlL1EF9IZivuDhS1ZToSEyYA6OWT'
+											}
+											alt=''
+											className='avatar-image-small mr-2'
+										/>
+										{auth.fullName}[{auth.role}]
+									</div>
+									<ul
+										className='dropdown-menu'
+										aria-labelledby='navbarDropdown'>
+										<li>
+											
+												<Link
+													className='dropdown-item'
+													to={{
+														pathname:
+															'/customer-profile',
+														state: {
+															customer: auth.user
+														}
+													}}>
+													My Profile
+												</Link>
+											
+										
+											
+											
+										</li>
 
+										<li>
+											<hr className='dropdown-divider' />
+										</li>
+										<NavBtnLink
+											className='btn btn-outline-danger m-2'
+											onClick={signOut}>
+											Logout
+										</NavBtnLink>
+									</ul>
+								</li>
+							</ul>
+							// <ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
+							// 	<li className='nav-item'>
+							// 		<span className='text-dark nav-link'>
+							// 			{auth.fullName}
+							// 		</span>
+							// 	</li>
+							// 	<button
+							// 		className='btn btn-outline-danger m-2'
+							// 		onClick={signOut}>
+							// 		Logout
+							// 	</button>
+							// </ul>
+						)}
+                        </NavMenu>
               </NavbarContainer>
              
         </Nav>
