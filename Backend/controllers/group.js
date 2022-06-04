@@ -51,7 +51,7 @@ router.put('/add/:id', async (req, res) => {
 	}
 });
 
-//update comment
+//update marks
 router.put("/edit/:id", async(req,res)=>{
 
     try{

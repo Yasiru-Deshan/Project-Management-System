@@ -1,3 +1,8 @@
+const connectDB = require('./config/database');
+const { Server } = require("socket.io");
+const http = require("http");
+require('dotenv').config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -8,7 +13,12 @@ const passport = require('passport');
 const app = express(); 
 require("dotenv").config();
 
-
+const userRoutes = require('./routes/user-route');
+const awsRoutes = require('./routes/aws-route');
+const topicRoutes = require('./controllers/Topic');
+const requestRoutes = require('./controllers/requests');
+const groupRoutes = require('./controllers/group');
+const presentationRoutes = require('./controllers/presentation');
 
 //import topic routes
 const topicRoutes = require('./routes/Topic')
@@ -40,24 +50,53 @@ app.use(bodyParser.json());
 
 const PORT = process.env.PORT||8070;
 
+
 app.use(cors());
+connectDB();
 
+//Init middleware
+app.use(express.json({ extended: false }));
 
-app.use(express.json());
+app.use('/api/auth', userRoutes);
+app.use('/api/aws', awsRoutes);
+app.use("/api/topics", topicRoutes);
+app.use("/api/requests", requestRoutes);
+app.use("/api/groups", groupRoutes);
+app.use("/api/presenation", presentationRoutes
+)
 
+const PORT2 = process.env.PORT || 5000;
 
-const URL = process.env.MONGODB_URL;
+app.listen(PORT2, () => console.log(`server started on port ${5000}`));
 
-mongoose.connect(URL,{
-       useNewUrlParser: true,
-       useUnifiedTopology: true
-     
+const server = http.createServer(app);
+ 
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
 });
 
+io.on("connection", (socket) => {
+  //console.log(`User Connected: ${socket.id}`);
 
-const connection = mongoose.connection;
-connection.once("open", ()=>{
-    console.log("Mongodb connection success!");
+  socket.on("join_room", (data) => {
+    socket.join(data);
+    //console.log(`User with ID: ${socket.id} joined room: ${data}`);
+  });
+
+  socket.on("send_message", (data) => {
+    socket.to(data.room).emit("receive_message", data);
+  });
+
+  socket.on("disconnect", () => {
+    //console.log("User Disconnected", socket.id);
+  });
+});
+
+server.listen(3001, () => {
+  //console.log("SERVER RUNNING");
 });
 
 app.listen(PORT,()=>{
@@ -69,6 +108,7 @@ app.use(passport.initialize());
 
 // Passport Config
 require('./config/passport')(passport);
+
 
 app.use("/api/topics", topicRoutes);
 app.use("/api/topics", topicRoutes);
