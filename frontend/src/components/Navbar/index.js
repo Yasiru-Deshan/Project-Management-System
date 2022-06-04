@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext} from 'react';
 import {FaBars} from 'react-icons/fa';
+import {Link} from 'react-router-dom';
 import { IconContext } from 'react-icons/lib';
 import background from "../../images/f1.png"; 
 import { animateScroll as scroll } from 'react-scroll';
@@ -51,7 +52,7 @@ const Navbar = ({ user,toggle}) => {
         <Nav scrollNav={scrollNav}>
               <NavbarContainer> 
                   <NavLogo to="/" onClick={toggleHome}>
-                      ProjectManager
+                      RP Management Tool
                   </NavLogo>
 
                   <MobileIcon onClick={toggle}>
@@ -62,14 +63,15 @@ const Navbar = ({ user,toggle}) => {
                   <NavMenu>
                  {auth.isLoggedIn && (
                       <NavItem>
-                          <NavLinks to='/'
+                        <NavLinks
                                     smooth={true} 
                                     duration={500} 
                                     spy={true} 
                                     exact='true' 
                                     offset={-80}
-                                
-                                    >Home</NavLinks>
+                                    >
+                                    <Link to='/admin/dashboard'>Dashboard</Link>
+                        </NavLinks>
                       </NavItem>
 				 )}
 				 {auth.role === 'supervisor' && (
