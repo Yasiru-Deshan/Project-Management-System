@@ -16,6 +16,11 @@ import SupervisorHome from './pages/Supervisor';
 import SignUp from './components/SignUp/signup';
 import EvaluationPage from './pages/evaluationPage';
 import Requests from './components/Requests';
+import Presentation from './pages/presentation';
+import TopicEvaluation from './pages/topicEvaluation';
+import FinalEvaluation from './pages/finalEvaluation';
+import FinalMarks from './pages/finalMarks';
+import Markings from './pages/markings';
 
 const getRoutes = (role, token) => {
 	let routes;
@@ -34,11 +39,17 @@ const getRoutes = (role, token) => {
 				 <Route exact path='/profile/:id'>
 					<MyProfile />
 				</Route>
+				<Route exact path='/topic/:id'>
+					<TopicEvaluation />
+				</Route>
 				<Route
 					exact
 					path='/customer-profile'
 					component={CustomerProfile}
 				/>
+			    <Route exact path='/presentation/:id'>
+					<Presentation />
+				</Route>
 				
 				<Route exact path='/'>
 					<PanelMember />
@@ -49,8 +60,22 @@ const getRoutes = (role, token) => {
 	} else if (token && role === 'cosupervisor') {
 		routes = (
 			<Switch>
-				<Route exact path='/'>
+				<Route exact path='/topic/:id'>
+					<TopicAccept />
+				</Route>
+				<Route exact path='/chat'>
 					<Chat />
+				</Route>
+				<Route exact path='/evaluation/:id'>
+					<EvaluationPage /></Route>
+                 <Route exact path='/markings'>
+					<Markings />
+				</Route>
+                <Route exact path='/myprofile'>
+					<MyProfile />
+				</Route>
+				<Route exact path='/requests'>
+					<Requests />
 				</Route>
 				<Route exact path='/myprofile'>
 					<CustomerProfile />
@@ -85,6 +110,9 @@ const getRoutes = (role, token) => {
 				<Route exact path='/chat'>
 					<Chat />
 				</Route>
+				<Route exact path='/markings'>
+					<Markings />
+				</Route>
 				<Route exact path='/evaluation/:id'>
 					<EvaluationPage />
 				</Route>
@@ -93,6 +121,12 @@ const getRoutes = (role, token) => {
 				</Route>
 				<Route exact path='/requests'>
 					<Requests />
+				</Route>
+				<Route exact path='/final'>
+					<FinalEvaluation />
+				</Route>
+					<Route exact path='/final/:id'>
+					<FinalMarks />
 				</Route>
 				<Route
 					exact

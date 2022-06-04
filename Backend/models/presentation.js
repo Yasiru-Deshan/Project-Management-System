@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const GroupSchema = mongoose.Schema({
+const mongoose = require('mongoose')
+const PresentationSchema = mongoose.Schema({
     groupName:{
         type: String
     },
@@ -24,25 +24,10 @@ const GroupSchema = mongoose.Schema({
     feedback:{
         type: String
     },
-    presentationMarks:{
-        type: Number
-    },
-    video:{
+    supervisor:{
         type: String
-    },
-    presentationFeedback:{
-        type: String
-    },
-    sent:{
-        type: Boolean
-    },
-    topic:{
-        type: String
-    },
-    final:{
-        type: Number
     }
     
 });
 
-module.exports = mongoose.model('Group', GroupSchema)
+module.exports = mongoose.model('Presentation', PresentationSchema)

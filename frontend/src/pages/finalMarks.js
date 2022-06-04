@@ -7,7 +7,7 @@ import { ServicesCard, ServicesContainer, ServicesWrapper } from '../components/
 import axios from 'axios';
 import {AuthContext} from '../context/AuthContext';
 
-function EvaluationPage (){
+function Finalmarks (){
 
     const id = useParams().id;
     const [groupId, setGroupId] = useState("");
@@ -17,6 +17,9 @@ function EvaluationPage (){
     const [marks,setMarks] = useState("");
     const [docName,setDocName] = useState("");
     const [feedback,setFeedBack] = useState("");
+    const [presentation, setPresentation] = useState("");
+    const [presentationFeedback, setPresentationFeedback] = useState("");
+    const [final,setFinal] = useState("");
     const auth = useContext(AuthContext);
 
     useEffect(()=>{
@@ -29,6 +32,9 @@ function EvaluationPage (){
             setMarks(response.marks);
             setDocName(response.docName);
             setFeedBack(response.feedback);
+            setPresentationFeedback(response.presentationFeedback);
+            setPresentation(response.presentationMarks);
+            setFinal(response.final);
 
         }
         fetchdata();
@@ -100,7 +106,7 @@ function EvaluationPage (){
                         
                         <h4>{groupId}</h4>
                         <div className='mb-3'>
-							
+							 <label htmlFor='marks'>Project Folder</label>
 							<input
 								type='text'
 								name='text'
@@ -123,15 +129,26 @@ function EvaluationPage (){
                                     <th>Marks</th></tr>
                                     
                                     <tr><td>{students[0]}</td>
-                                    <td>{marks}</td></tr>
+                                    <td>{final}</td></tr>
                                     <tr><td>{students[1]}</td>
-                                    <td>{marks}</td></tr>
+                                    <td>{final}</td></tr>
                                     <tr><td>{students[2]}</td>
-                                    <td>{marks}</td></tr>
+                                    <td>{final}</td></tr>
                                     <tr><td>{students[3]}</td>
-                                    <td>{marks}</td></tr>
+                                    <td>{final}</td></tr>
                                 </table></div>
-                            <label htmlFor='marks'>Enter Marks</label>
+                            <label htmlFor='marks'>Presentation Marks</label>
+                            <input
+								type='text'
+								name='text'
+								className='form-control'
+								id='email'
+								placeholder='Enter Marks'
+								value={presentation}
+                                onChange = {(e)=>{setMarks(e.target.value)}}
+							/></div>
+
+                            <label htmlFor='marks'>Project Marks</label>
                             <input
 								type='text'
 								name='text'
@@ -140,20 +157,19 @@ function EvaluationPage (){
 								placeholder='Enter Marks'
 								value={marks}
                                 onChange = {(e)=>{setMarks(e.target.value)}}
-							/></div>
-                        
-                         <div className='mb-3'>
-							<label htmlFor='feedback'>Feedback</label>
-							<input
+							/>
+
+                             <label htmlFor='marks'>Final Marks</label>
+                            <input
 								type='text'
 								name='text'
-								className='form-control mb-6'
+								className='form-control'
 								id='email'
-                                onChange={(e) =>{setFeedBack(e.target.value)}}
-								value={feedback}
-								placeholder='Enter feedback here'
+								placeholder='Enter Marks'
+								value={final}
+                                onChange = {(e)=>{setMarks(e.target.value)}}
 							/>
-						</div>
+                      
                   </Card.Body>
                   
                <Card.Footer>
@@ -172,4 +188,4 @@ function EvaluationPage (){
     )
 }
 
-export default EvaluationPage
+export default Finalmarks

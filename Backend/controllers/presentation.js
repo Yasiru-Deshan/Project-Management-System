@@ -1,9 +1,10 @@
 const router = require("express").Router();
-const Group = require('../models/group');
+const presentation = require("../models/presentation");
+const Prsentatation = require('../models/presentation');
 
 router.post('/', async(req,res)=>{
 
-    const newGroup = new Group(req.body);
+    const newGroup = new presentation(req.body);
 
     try{
         const savedGroup = await newGroup.save();
@@ -13,10 +14,10 @@ router.post('/', async(req,res)=>{
     }
 })
 
-//get Groups
+//get presentations
 router.get('/all', async(req,res)=>{
 
-     Group.find().then((groups)=>{
+     Presentation.find().then((groups)=>{
          res.json(groups)
      }).catch((err)=>{
          console.log(err)
@@ -24,11 +25,11 @@ router.get('/all', async(req,res)=>{
 
 });
 
-//get group by id
+//get presentation by id
 router.get('/:id', async(req,res)=>{
 
     try{
-        const group = await Group.findById(req.params.id);
+        const group = await Presentation.findById(req.params.id);
          res.status(200).json(group);
     }catch(err){
         res.status(500).json(err);
@@ -38,7 +39,7 @@ router.get('/:id', async(req,res)=>{
 //Add student to group
 router.put('/add/:id', async (req, res) => {
 	try {
-		const group = await Group.findByIdAndUpdate(
+		const group = await Prsentatation.findByIdAndUpdate(
 			req.params.id,
 			{
 				$set: req.body
@@ -51,11 +52,11 @@ router.put('/add/:id', async (req, res) => {
 	}
 });
 
-//update marks
+//update comment
 router.put("/edit/:id", async(req,res)=>{
 
     try{
-        const group = await Group.findById(req.params.id);
+        const group = await Prsentatation.findById(req.params.id);
 
         await group.updateOne({ $set:req.body});
         res.status(200).json("Marks has been updated");

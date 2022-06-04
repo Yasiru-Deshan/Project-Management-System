@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import Table from '../../common/table'; 
 import Like from '../../common/like';
 import Icon2 from '../../../images/svg-2.svg'
@@ -18,8 +18,10 @@ import { HeroContainer,
           } from './HeroElements';
 import { Button } from '../../ButtonElements';
 import Modal from 'react-modal';
+import axios from 'axios';
+import {Link} from 'react-router-dom'
 
-class Home extends Component{
+function Home() {
 
     // [hover, setHover] = useState(false)
 
@@ -27,10 +29,19 @@ class Home extends Component{
     //     setHover(!hover)
     // }
     
-   
+      const [topicList,setTopicList] = useState([]);
     
+   useEffect(()=>{
+     
+    const getTopics = ()=>{
+      axios.get('http://localhost:5000/api/groups/all').then((res)=>{
+          setTopicList(res.data);
+      })
+    }
 
-    render(){
+    getTopics();
+} ,[]  );
+    
   
 
     return (
@@ -56,7 +67,7 @@ class Home extends Component{
                        <thead>
                          <tr>
                            <th>Group ID</th>
-                           <th>Date</th>
+                            
                            <th>View</th>
                            <th>Status</th>
                           
@@ -65,27 +76,22 @@ class Home extends Component{
                        </thead>
                        <tbody>
                       
+                          {topicList.map(topic => (
+                          <>
+                         
                          <tr>
-                           <td>SE_3040</td>  
-                           <td>11/4/2022</td>
-                           <td><Button>https://www.dropbox.com/s/0sn4pdcz9q163vk</Button></td>
-                           <td><Button>Pending</Button></td>
-                          
-    </tr>
-    <tr>
-                           <td>SE_3040</td>  
-                           <td>11/4/2022</td>
-                           <td><Button>https://www.dropbox.com/s/0sn4pdcz9q163vk</Button></td>
-                           <td><Button>Pending</Button></td>
-                          
-    </tr>
-    <tr>
-                           <td>SE_3040</td>  
-                           <td>11/4/2022</td>
-                           <td><Button>https://www.dropbox.com/s/0sn4pdcz9q163vk</Button></td>
-                           <td><Button>Pending</Button></td>
-                          
-    </tr>
+                         
+                           <td>{topic.groupId}</td>
+                           
+                           <td><Link to={`/topic/${topic._id}`} style={{textDecoration:'none'}}><button className='btn btn-primary'>View</button></Link></td>
+                           {topic.status ?
+                           <td><button className='btn btn-danger'>Pending</button></td>:
+                           <td><button className='btn btn-primary'>Evaluated</button></td>}
+                           </tr>
+                           
+                            </>
+                        ))}
+    
                   
                        </tbody>
                      </table>
@@ -106,7 +112,7 @@ class Home extends Component{
             
         
     );
-};
+
 }
 
 export default Home;

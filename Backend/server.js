@@ -10,6 +10,7 @@ const awsRoutes = require('./routes/aws-route');
 const topicRoutes = require('./controllers/Topic');
 const requestRoutes = require('./controllers/requests');
 const groupRoutes = require('./controllers/group');
+const presentationRoutes = require('./controllers/presentation');
 
 const app = express();
 app.use(cors());
@@ -23,6 +24,8 @@ app.use('/api/aws', awsRoutes);
 app.use("/api/topics", topicRoutes);
 app.use("/api/requests", requestRoutes);
 app.use("/api/groups", groupRoutes);
+app.use("/api/presenation", presentationRoutes
+)
 
 const PORT = process.env.PORT || 5000;
 

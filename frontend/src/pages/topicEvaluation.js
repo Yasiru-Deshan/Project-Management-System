@@ -7,16 +7,18 @@ import { ServicesCard, ServicesContainer, ServicesWrapper } from '../components/
 import axios from 'axios';
 import {AuthContext} from '../context/AuthContext';
 
-function EvaluationPage (){
+function TopicEvaluation (){
 
     const id = useParams().id;
     const [groupId, setGroupId] = useState("");
     const [groupName,setGroupName] = useState("");
     const [status,setStatus] = useState(false);
     const [students,setStudents] = useState([]);
-    const [marks,setMarks] = useState("");
+   
     const [docName,setDocName] = useState("");
     const [feedback,setFeedBack] = useState("");
+    const [presentation, setPresentation] = useState("");
+    const [presentationFeedback, setPresentationFeedback] = useState("");
     const auth = useContext(AuthContext);
 
     useEffect(()=>{
@@ -26,9 +28,11 @@ function EvaluationPage (){
             setGroupName(response.groupName);
             setStatus(response.status);
             setStudents(response.students);
-            setMarks(response.marks);
-            setDocName(response.docName);
-            setFeedBack(response.feedback);
+            setDocName(response.docName)
+            //setMarks(response.marks);
+           // setFeedBack(response.presentationFeedback);
+            setPresentationFeedback(response.presentationFeedback);
+            setPresentation(response.presentationMarks)
 
         }
         fetchdata();
@@ -40,9 +44,9 @@ function EvaluationPage (){
         e.preventDefault()
         const updatedMarks = {
             status: status,
-            marks:marks,
-            feedback:feedback,
-            evaluatedBy:auth.fullName
+            presentationMarks: presentation,
+            presentationFeedback: presentationFeedback,
+            
         }
 
         try{
@@ -61,9 +65,9 @@ function EvaluationPage (){
         e.preventDefault()
         const updatedMarks = {
             status: true,
-            marks:marks,
-            feedback:feedback.at,
-            evaluatedBy:auth.fullName
+            presentationMarks: presentation,
+            presentationFeedback: presentationFeedback,
+          
         }
 
         try{
@@ -123,23 +127,23 @@ function EvaluationPage (){
                                     <th>Marks</th></tr>
                                     
                                     <tr><td>{students[0]}</td>
-                                    <td>{marks}</td></tr>
+                                    <td>{presentation}</td></tr>
                                     <tr><td>{students[1]}</td>
-                                    <td>{marks}</td></tr>
+                                    <td>{presentation}</td></tr>
                                     <tr><td>{students[2]}</td>
-                                    <td>{marks}</td></tr>
+                                    <td>{presentation}</td></tr>
                                     <tr><td>{students[3]}</td>
-                                    <td>{marks}</td></tr>
+                                    <td>{presentation}</td></tr>
                                 </table></div>
-                            <label htmlFor='marks'>Enter Marks</label>
+                            <label htmlFor='presentation'>Enter Marks</label>
                             <input
 								type='text'
 								name='text'
 								className='form-control'
 								id='email'
 								placeholder='Enter Marks'
-								value={marks}
-                                onChange = {(e)=>{setMarks(e.target.value)}}
+								value={presentation}
+                                onChange = {(e)=>{setPresentation(e.target.value)}}
 							/></div>
                         
                          <div className='mb-3'>
@@ -149,8 +153,8 @@ function EvaluationPage (){
 								name='text'
 								className='form-control mb-6'
 								id='email'
-                                onChange={(e) =>{setFeedBack(e.target.value)}}
-								value={feedback}
+                                onChange={(e) =>{setPresentationFeedback(e.target.value)}}
+								value={presentationFeedback}
 								placeholder='Enter feedback here'
 							/>
 						</div>
@@ -172,4 +176,4 @@ function EvaluationPage (){
     )
 }
 
-export default EvaluationPage
+export default TopicEvaluation
