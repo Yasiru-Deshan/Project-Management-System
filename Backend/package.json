@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"name": "backend",
 	"version": "1.0.0",
 	"description": "",
@@ -24,4 +25,27 @@
 	"devDependencies": {
 		"nodemon": "^2.0.16"
 	}
+=======
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "A research project management system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "yasiru,dilanka,miyelandi",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-validator": "^6.14.1",
+    "mongoose": "^6.3.0",
+    "multer": "^1.4.4",
+    "nodemon": "^2.0.16",
+    "react-dropzone": "^11.2.0"
+  }
+>>>>>>> eea39b23c15f7ee4ba2ca014b828cf9765479263
 }
